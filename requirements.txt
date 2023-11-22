@@ -1,0 +1,4 @@
+tensorflow
+tensorflow_model_optimization
+keras
+numpy

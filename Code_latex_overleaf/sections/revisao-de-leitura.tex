@@ -1,0 +1,66 @@
+\section{TRABALHOS RELACIONADOS}
+
+Esta seção apresenta estudos relacionados ao uso de \ac{CNN} para a segmentação de imagens médicas, oferecendo um panorama das pesquisas recentes e estabelecendo um comparativo com o presente trabalho. É também demostrado as bases de dados exploradas em cada estudo. Podemos ver essa análise na tabela ~\ref{tab:analiseTrabalhosRelacionados}.
+
+\begin{table}
+\tiny
+\centering
+\caption{Análise Comparativa dos Trabalhos Relacionados}
+\label{tab:analiseTrabalhosRelacionados}
+\begin{tblr}{
+  cells = {c},
+  row{9} = {Silver},
+  cell{1}{1} = {r=2}{},
+  cell{1}{2} = {c=4}{},
+  cell{1}{6} = {c=4}{},
+  vlines,
+  hline{1,3-10} = {-}{},
+  hline{2} = {2-9}{},
+}
+\textbf{Autores } & \textbf{Datasets} &&&& \textbf{Models} &&&\\
+
+& {\textbf{Wound}\\\textbf{Segmentation}} & \textbf{WSNET} & {\textbf{Venous leg ulcers}\\\textbf{and arterial leg ulcers}} & {\textbf{Foot Wounds}\\\textbf{and Ulcers}} & \textbf{U-Net}  & \textbf{SegNet} & \textbf{MobileNetV2} & \textbf{FCN} \\
+
+\cite{li2020fully}          & X &   &   &   & X &   & X &    \\
+\cite{silva2021avaliacao}   & X &   &   &   &   &   & X & X  \\
+\cite{liu2021computational} & X &   &   & X &   & X &   & X  \\
+ \cite{akay2021deep}        &   &   & X &   &   &   & X &     \\
+ \cite{mahbod2022automatic} & X &   &   &   & X &   &   &     \\
+ \cite{prakash2023end}      &   & X &   &   & X &   &   & X    \\
+\textbf{Nosso trabalho}     & \textbf{X} & \textbf{X} & \textbf{X} & \textbf{X} & \textbf{X} & \textbf{X} & \textbf{X} & \textbf{X}
+\end{tblr}
+\end{table}
+
+Em 2020, Li et al, propuseram uma abordagem inovadora para a segmentação automática de feridas em imagens naturais, utilizando uma rede neural profunda com base no modelo \ac{MobileNetV2}. A rede foi aprimorada com camadas adicionais para aumentar a precisidade na segmentação. Avaliada em um extenso banco de dados, a abordagem superou métodos preexistentes em termos de precisão, sugerindo seu potencial para diagnósticos e tratamentos mais eficazes.~\cite{li2020fully}
+
+Silva e colaboradores, em 2021, avaliaram dois modelos de aprendizado profundo, \ac{U-Net} e DeeplabV3, para segmentação de feridas malignas cutâneas. Utilizando um conjunto de dados do AZH Wound and Vascular Center, o modelo \ac{U-Net} demonstrou superioridade, enquanto o DeeplabV3 mostrou-se competitivo. O estudo também explorou a relação entre acurácia e eficiência computacional, apontando para futuras pesquisas focadas na compactação de redes neurais para dispositivos com restrições de hardware.~\cite{silva2021avaliacao}
+
+No mesmo ano, Liu et al, realizaram uma revisão sistemática sobre metodologias computacionais aplicadas à medição e diagnóstico de feridas, destacando o papel das tecnologias de IA. A revisão abrangeu mais de 250 artigos, dos quais 115 foram selecionados por sua relevância. O estudo enfatizou a importância das tecnologias emergentes para a avaliação de feridas, concluindo que elas podem aumentar a precisão e eficiência no tratamento.~\cite{liu2021computational}
+
+Em 2021 Akay, M., Du, Y, apresentou uma nova rede de aprendizado profundo para a caracterização da pele de pacientes com Esclerose Sistêmica (SSc), uma doença autoimune rara. A rede proposta é baseada no modelo \ac{MobileNetV2} e é capaz de realizar a classificação de imagens de pele com alta precisão, o que pode ajudar no diagnóstico precoce da doença. O artigo discute os desafios enfrentados na aplicação de redes neurais profundas em aplicações médicas, como a falta de dados de treinamento e a necessidade de computação de alto desempenho. A rede proposta é projetada para trabalhar com poucas imagens de treinamento e fornecer classificações mais precisas.~\cite{akay2021deep}
+
+No ano de 2022 o Mahbod et al, propôs um método de segmentação automática de úlceras nos pés usando uma abordagem de conjunto de redes neurais convolucionais (CNNs). O método proposto utiliza dois modelos de CNN, o LinkNet e o \ac{U-Net}, para melhorar a precisão da segmentação de úlceras nos pés. O LinkNet e o \ac{U-Net} são modelos de CNN baseados em codificador-decodificador que têm mostrado excelente desempenho em tarefas de análise de imagens médicas, incluindo segmentação de imagens médicas.~\cite{mahbod2022automatic}
+
+Recentemente, em 2023, Prakash et al, introduziram um framework de aprendizado profundo para a segmentação automática de lesões em imagens de ressonância magnética. O framework GA-UNet mostrou-se eficaz na segmentação e quantificação de áreas afetadas por lesões cerebrais traumáticas, ressaltando a importância da segmentação precisa para intervenções terapêuticas.~\cite{prakash2023end}
+
+
+\subsection{Limitação dos Trabalhos Relacionados}
+
+Apesar dos avanços recentes no uso de \ac{CNN} para a segmentação de imagens médicas, alguns trabalhos ainda apresentam limitações em relação à precisão e eficiência na segmentação de feridas malignas. Por exemplo, alguns modelos podem apresentar dificuldades em lidar com variações na forma, tamanho e textura das lesões, o que pode levar a erros na segmentação e consequentemente afetar a precisão do diagnóstico e tratamento.
+
+Além disso, muitos trabalhos não consideram a heterogeneidade dos dados clínicos, como a presença de diferentes tipos de lesões, a variação na qualidade das imagens e a diversidade de pacientes. Esses fatores podem afetar a generalização dos modelos e limitar sua aplicabilidade em diferentes cenários clínicos.
+
+Outra limitação comum dos trabalhos relacionados é a falta de comparação com outros métodos de segmentação de imagem. Muitos trabalhos se concentraram exclusivamente em modelos de aprendizado profundo, sem compará-los com outros métodos de segmentação de imagem, como métodos baseados em regras ou métodos de segmentação baseados em bordas. Isso pode levar a uma avaliação limitada da eficácia dos modelos de aprendizado profundo em comparação com outros métodos.
+
+Por fim, muitos trabalhos não avaliaram a eficácia dos modelos de aprendizado profundo em condições clínicas reais. Isso pode levar a uma avaliação limitada da eficácia dos modelos em situações do mundo real, onde as condições podem ser mais variáveis e imprevisíveis do que em um ambiente de laboratório controlado.
+
+
+\subsection{Diferencial do Nosso Trabalho }
+
+Neste estudo, propomos uma abordagem inovadora para a segmentação de feridas malignas em imagens médicas, que combina diferentes modelos de aprendizado profundo e técnicas de pré-processamento de imagens. Em particular, exploramos a eficiência e aplicabilidade de quatro modelos de \ac{CNN}: \ac{FCN}, \ac{U-Net}, \ac{SegNet} e \ac{MobileNetV2}.
+
+Para avaliar o desempenho dos modelos, utilizamos um conjunto de dados clínicos heterogêneo, que incluiu imagens de diferentes tipos de lesões, de pacientes de diferentes idades e com diferentes níveis de gravidade. Além disso, aplicamos técnicas de pré-processamento de imagens, como normalização, aumento de dados e segmentação manual, para melhorar a qualidade e consistência dos dados.
+
+O estudo atual usa uma abordagem de validação cruzada estratificada para avaliar a eficácia dos modelos de aprendizado profundo. Isso ajuda a garantir que os modelos sejam avaliados de forma justa e imparcial em diferentes conjuntos de dados. Foi utilizado dados diversificado que inclui diferentes tipos de lesões malignas, isso ajuda a garantir que os modelos sejam avaliados em uma variedade de condições clínicas e possam ser aplicados em diferentes cenários.
+
+Os resultados obtidos mostraram que nossa abordagem é capaz de segmentar com precisão as feridas malignas em imagens médicas, com uma boa média de precisão da segmentação da ferida. Além disso, nossa abordagem apresentou uma boa generalização em diferentes cenários clínicos, o que sugere sua aplicabilidade em diferentes contextos médicos.

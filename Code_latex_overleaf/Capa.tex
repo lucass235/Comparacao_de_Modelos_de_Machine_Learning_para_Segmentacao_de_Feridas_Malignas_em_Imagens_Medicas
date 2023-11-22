@@ -1,0 +1,67 @@
+%
+% ********** Página de Rosto
+%
+
+% titlepage gera páginas sem numeração
+\begin{titlepage}
+
+\begin{center}
+
+\small
+
+% O comando @{} no ambiente tabular x é para criar um novo delimitador
+% entre colunas que não a barra vertical | que é normalmente utilizada.
+% O delimitador desejado vai entre as chaves. No exemplo, não há nada,
+% de modo que o delimitador é vazio. Este recurso está sendo usado para
+% eliminar o espaço que geralmente existe entre as colunas
+\begin{tabularx}{\linewidth}{  }
+% A figura foi colocada dentro de um parbox para que fique verticalmente
+% centralizada em relação ao resto da linha
+\parbox[c]{3cm}{\includegraphics[width=\linewidth]{IFRN}} &
+\begin{center}
+\textsf{\textsc{UNIVERSIDADE CATÓLICA DE PERNAMBUCO \\
+CURSO DE CIÊNCIA DA COMPUTAÇÃO
+
+}}
+\end{center}
+
+\end{tabularx}
+
+
+% O vfill é um espaço vertical que assume a máxima dimensão possível
+% Os vfill's desta página foram utilizados para que o texto ocupe
+% toda a folha
+\vfill
+
+\LARGE
+
+\textbf{
+Avaliação de Conformidade em Segurança e Gerenciamento de Eventos com Auxilio da Nuvem
+}
+
+\vfill
+
+\Large
+
+\textbf{Fulano}
+
+\vfill
+
+\normalsize
+
+Prof. Rafael Roque
+
+\vfill
+
+\hfill
+
+
+\vfill
+
+\large
+
+
+
+\end{center}
+
+\end{titlepage}

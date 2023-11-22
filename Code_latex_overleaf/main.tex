@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage[brazil]{babel}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}  
+\usepackage[nolist]{acronym} %gerenciar siglas
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pgfplots} 
+\usepackage{algorithm}
+\usepackage{algpseudocode} 
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{colortbl}
+% \usepackage{color}
+\usepackage{tabularray}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\definecolor{Silver}{rgb}{0.752,0.752,0.752}
+
+\sloppy
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest,compat/show suggested version=false}
+
+\begin{acronym}
+   \acro{NLP}{Natural Language Processing}
+   \acro{NL}{Natural Language}
+   \acro{PLN}{Processamento de Linguagem Natural}
+   \acro{FAQ}{Frequently Asked Questions}
+    \acro{KG}{Knowledge Graph}
+    \acro{API}{Application Programming Interface}
+     \acro{DM}{Diabetes Mellitus}
+     \acro{IDF}{International Diabetes Federation}
+     \acro{WHO}{World Health Organization}
+     \acro{UPD}{Úlceras do Pé Diabético}
+     \acro{DAP}{Doença Arterial Periférica}
+     \acro{IA}{Inteligência Artificial}
+     \acro{CNNs}{Redes Neurais Convulacionais}
+     \acro{RNAs}{Redes Neurais Artificiais}
+     \acro{FCN}{Fully Convolutional Network}
+     \acro{SegNet}{Segmentation Network}
+     \acro{MobileNetV2}{MobileNet Versão 2}
+     \acro{U-Net}{U-Net}
+     \acro{CNN}{Convolutional Neural Network}
+     \acro{ANN}{Artificial neural Networks } 
+     \acro{}{}
+     \acro{}{}
+\end{acronym}
+
+\titlespacing*{\subsection}{0pt}{1.5\baselineskip}{1\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{1.5\baselineskip}{1\baselineskip}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{1\baselineskip}
+
+\begin{document} 
+
+
+
+\newpage
+% Página de rosto (capa interna)
+%\pagenumbering{arabic}
+%\include{Capa}
+
+\include{ContraCapa}
+
+\thispagestyle{empty}
+%\include{sections/agradecimento} 
+
+\newpage
+\thispagestyle{empty}
+\include{sections/resumo} 
+
+\newpage
+
+\thispagestyle{empty}
+\include{sections/abstract} 
+
+\newpage
+\thispagestyle{empty}
+\renewcommand{\contentsname}{Sumário}
+\tableofcontents  
+
+%\newpage
+%\thispagestyle{empty}
+% Lista de figuras (gerada automaticamente)
+%\renewcommand{\listfigurename}{Lista de Figuras}
+%\cleardoublepage 
+%\listoffigures  
+
+%\newpage
+%\thispagestyle{empty}
+% Lista de tabelas (gerada automaticamente)
+%\renewcommand{\listtablename}{Lista de Tabelas}
+%\cleardoublepage 
+%\listoftables
+
+\newpage
+
+
+
+\input{sections/introducao.tex}
+\newpage
+\input{sections/objetivo}
+\newpage
+
+\input{sections/fundamentacao}
+\newpage
+
+\input{sections/revisao-de-leitura}
+\newpage
+
+\input{sections/metodologia.tex}
+\newpage
+
+\input{sections/resultados.tex}
+\newpage
+
+\input{sections/discussoes}
+% \newpage
+
+% \input{sections/cronograma.tex}
+
+\newpage
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
