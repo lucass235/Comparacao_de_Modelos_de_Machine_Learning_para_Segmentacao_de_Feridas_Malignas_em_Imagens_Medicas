@@ -1,0 +1,141 @@
+Model: "model_1"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_3 (InputLayer)           [(None, None, None,  0           []                               
+                                 3)]                                                              
+                                                                                                  
+ conv2d_9 (Conv2D)              (None, None, None,   896         ['input_3[0][0]']                
+                                32)                                                               
+                                                                                                  
+ conv2d_10 (Conv2D)             (None, None, None,   9248        ['conv2d_9[0][0]']               
+                                32)                                                               
+                                                                                                  
+ max_pooling2d_4 (MaxPooling2D)  (None, None, None,   0          ['conv2d_10[0][0]']              
+                                32)                                                               
+                                                                                                  
+ conv2d_11 (Conv2D)             (None, None, None,   18496       ['max_pooling2d_4[0][0]']        
+                                64)                                                               
+                                                                                                  
+ conv2d_12 (Conv2D)             (None, None, None,   36928       ['conv2d_11[0][0]']              
+                                64)                                                               
+                                                                                                  
+ max_pooling2d_5 (MaxPooling2D)  (None, None, None,   0          ['conv2d_12[0][0]']              
+                                64)                                                               
+                                                                                                  
+ conv2d_13 (Conv2D)             (None, None, None,   73856       ['max_pooling2d_5[0][0]']        
+                                128)                                                              
+                                                                                                  
+ conv2d_14 (Conv2D)             (None, None, None,   147584      ['conv2d_13[0][0]']              
+                                128)                                                              
+                                                                                                  
+ conv2d_15 (Conv2D)             (None, None, None,   147584      ['conv2d_14[0][0]']              
+                                128)                                                              
+                                                                                                  
+ max_pooling2d_6 (MaxPooling2D)  (None, None, None,   0          ['conv2d_15[0][0]']              
+                                128)                                                              
+                                                                                                  
+ conv2d_16 (Conv2D)             (None, None, None,   295168      ['max_pooling2d_6[0][0]']        
+                                256)                                                              
+                                                                                                  
+ conv2d_17 (Conv2D)             (None, None, None,   590080      ['conv2d_16[0][0]']              
+                                256)                                                              
+                                                                                                  
+ conv2d_18 (Conv2D)             (None, None, None,   590080      ['conv2d_17[0][0]']              
+                                256)                                                              
+                                                                                                  
+ max_pooling2d_7 (MaxPooling2D)  (None, None, None,   0          ['conv2d_18[0][0]']              
+                                256)                                                              
+                                                                                                  
+ conv2d_19 (Conv2D)             (None, None, None,   590080      ['max_pooling2d_7[0][0]']        
+                                256)                                                              
+                                                                                                  
+ conv2d_20 (Conv2D)             (None, None, None,   590080      ['conv2d_19[0][0]']              
+                                256)                                                              
+                                                                                                  
+ conv2d_21 (Conv2D)             (None, None, None,   590080      ['conv2d_20[0][0]']              
+                                256)                                                              
+                                                                                                  
+ up_sampling2d_6 (UpSampling2D)  (None, None, None,   0          ['conv2d_21[0][0]']              
+                                256)                                                              
+                                                                                                  
+ conv2d_23 (Conv2D)             (None, None, None,   295040      ['conv2d_18[0][0]']              
+                                128)                                                              
+                                                                                                  
+ conv2d_22 (Conv2D)             (None, None, None,   131200      ['up_sampling2d_6[0][0]']        
+                                128)                                                              
+                                                                                                  
+ concatenate_1 (Concatenate)    (None, None, None,   0           ['conv2d_23[0][0]',              
+                                256)                              'conv2d_22[0][0]']              
+                                                                                                  
+ conv2d_24 (Conv2D)             (None, None, None,   295040      ['concatenate_1[0][0]']          
+                                128)                                                              
+                                                                                                  
+ conv2d_25 (Conv2D)             (None, None, None,   147584      ['conv2d_24[0][0]']              
+                                128)                                                              
+                                                                                                  
+ up_sampling2d_7 (UpSampling2D)  (None, None, None,   0          ['conv2d_25[0][0]']              
+                                128)                                                              
+                                                                                                  
+ conv2d_27 (Conv2D)             (None, None, None,   73792       ['conv2d_15[0][0]']              
+                                64)                                                               
+                                                                                                  
+ conv2d_26 (Conv2D)             (None, None, None,   32832       ['up_sampling2d_7[0][0]']        
+                                64)                                                               
+                                                                                                  
+ concatenate_2 (Concatenate)    (None, None, None,   0           ['conv2d_27[0][0]',              
+                                128)                              'conv2d_26[0][0]']              
+                                                                                                  
+ conv2d_28 (Conv2D)             (None, None, None,   73792       ['concatenate_2[0][0]']          
+                                64)                                                               
+                                                                                                  
+ conv2d_29 (Conv2D)             (None, None, None,   36928       ['conv2d_28[0][0]']              
+                                64)                                                               
+                                                                                                  
+ up_sampling2d_8 (UpSampling2D)  (None, None, None,   0          ['conv2d_29[0][0]']              
+                                64)                                                               
+                                                                                                  
+ conv2d_31 (Conv2D)             (None, None, None,   18464       ['conv2d_12[0][0]']              
+                                32)                                                               
+                                                                                                  
+ conv2d_30 (Conv2D)             (None, None, None,   8224        ['up_sampling2d_8[0][0]']        
+                                32)                                                               
+                                                                                                  
+ concatenate_3 (Concatenate)    (None, None, None,   0           ['conv2d_31[0][0]',              
+                                64)                               'conv2d_30[0][0]']              
+                                                                                                  
+ conv2d_32 (Conv2D)             (None, None, None,   18464       ['concatenate_3[0][0]']          
+                                32)                                                               
+                                                                                                  
+ conv2d_33 (Conv2D)             (None, None, None,   9248        ['conv2d_32[0][0]']              
+                                32)                                                               
+                                                                                                  
+ up_sampling2d_9 (UpSampling2D)  (None, None, None,   0          ['conv2d_33[0][0]']              
+                                32)                                                               
+                                                                                                  
+ conv2d_35 (Conv2D)             (None, None, None,   4624        ['conv2d_10[0][0]']              
+                                16)                                                               
+                                                                                                  
+ conv2d_34 (Conv2D)             (None, None, None,   2064        ['up_sampling2d_9[0][0]']        
+                                16)                                                               
+                                                                                                  
+ concatenate_4 (Concatenate)    (None, None, None,   0           ['conv2d_35[0][0]',              
+                                32)                               'conv2d_34[0][0]']              
+                                                                                                  
+ conv2d_36 (Conv2D)             (None, None, None,   4624        ['concatenate_4[0][0]']          
+                                16)                                                               
+                                                                                                  
+ conv2d_37 (Conv2D)             (None, None, None,   2320        ['conv2d_36[0][0]']              
+                                16)                                                               
+                                                                                                  
+ conv2d_38 (Conv2D)             (None, None, None,   435         ['conv2d_37[0][0]']              
+                                3)                                                                
+                                                                                                  
+ conv2d_39 (Conv2D)             (None, None, None,   4           ['conv2d_38[0][0]']              
+                                1)                                                                
+                                                                                                  
+==================================================================================================
+Total params: 4,834,839
+Trainable params: 4,834,839
+Non-trainable params: 0
+__________________________________________________________________________________________________

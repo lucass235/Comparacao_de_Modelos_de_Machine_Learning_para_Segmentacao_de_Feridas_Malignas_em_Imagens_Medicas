@@ -1,0 +1,1152 @@
+Model: "deeplabv3plus"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 224, 224, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ Conv (Conv2D)                  (None, 112, 112, 32  864         ['input_1[0][0]']                
+                                )                                                                 
+                                                                                                  
+ Conv_BN (BatchNormalization)   (None, 112, 112, 32  128         ['Conv[0][0]']                   
+                                )                                                                 
+                                                                                                  
+ Conv_Relu6 (Activation)        (None, 112, 112, 32  0           ['Conv_BN[0][0]']                
+                                )                                                                 
+                                                                                                  
+ expanded_conv_depthwise (Depth  (None, 112, 112, 32  288        ['Conv_Relu6[0][0]']             
+ wiseConv2D)                    )                                                                 
+                                                                                                  
+ expanded_conv_depthwise_BN (Ba  (None, 112, 112, 32  128        ['expanded_conv_depthwise[0][0]']
+ tchNormalization)              )                                                                 
+                                                                                                  
+ expanded_conv_depthwise_relu (  (None, 112, 112, 32  0          ['expanded_conv_depthwise_BN[0][0
+ Activation)                    )                                ]']                              
+                                                                                                  
+ expanded_conv_project (Conv2D)  (None, 112, 112, 16  512        ['expanded_conv_depthwise_relu[0]
+                                )                                [0]']                            
+                                                                                                  
+ expanded_conv_project_BN (Batc  (None, 112, 112, 16  64         ['expanded_conv_project[0][0]']  
+ hNormalization)                )                                                                 
+                                                                                                  
+ expanded_conv_1_expand (Conv2D  (None, 112, 112, 96  1536       ['expanded_conv_project_BN[0][0]'
+ )                              )                                ]                                
+                                                                                                  
+ expanded_conv_1_expand_BN (Bat  (None, 112, 112, 96  384        ['expanded_conv_1_expand[0][0]'] 
+ chNormalization)               )                                                                 
+                                                                                                  
+ expanded_conv_1_expand_relu (A  (None, 112, 112, 96  0          ['expanded_conv_1_expand_BN[0][0]
+ ctivation)                     )                                ']                               
+                                                                                                  
+ expanded_conv_1_depthwise (Dep  (None, 56, 56, 96)  864         ['expanded_conv_1_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_1_depthwise_BN (  (None, 56, 56, 96)  384         ['expanded_conv_1_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_1_depthwise_relu  (None, 56, 56, 96)  0           ['expanded_conv_1_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_1_project (Conv2  (None, 56, 56, 24)  2304        ['expanded_conv_1_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_1_project_BN (Ba  (None, 56, 56, 24)  96          ['expanded_conv_1_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_2_expand (Conv2D  (None, 56, 56, 144)  3456       ['expanded_conv_1_project_BN[0][0
+ )                                                               ]']                              
+                                                                                                  
+ expanded_conv_2_expand_BN (Bat  (None, 56, 56, 144)  576        ['expanded_conv_2_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_2_expand_relu (A  (None, 56, 56, 144)  0          ['expanded_conv_2_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_2_depthwise (Dep  (None, 56, 56, 144)  1296       ['expanded_conv_2_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_2_depthwise_BN (  (None, 56, 56, 144)  576        ['expanded_conv_2_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_2_depthwise_relu  (None, 56, 56, 144)  0          ['expanded_conv_2_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_2_project (Conv2  (None, 56, 56, 24)  3456        ['expanded_conv_2_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_2_project_BN (Ba  (None, 56, 56, 24)  96          ['expanded_conv_2_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_2_add (Add)      (None, 56, 56, 24)   0           ['expanded_conv_1_project_BN[0][0
+                                                                 ]',                              
+                                                                  'expanded_conv_2_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_3_expand (Conv2D  (None, 56, 56, 144)  3456       ['expanded_conv_2_add[0][0]']    
+ )                                                                                                
+                                                                                                  
+ expanded_conv_3_expand_BN (Bat  (None, 56, 56, 144)  576        ['expanded_conv_3_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_3_expand_relu (A  (None, 56, 56, 144)  0          ['expanded_conv_3_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_3_depthwise (Dep  (None, 28, 28, 144)  1296       ['expanded_conv_3_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_3_depthwise_BN (  (None, 28, 28, 144)  576        ['expanded_conv_3_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_3_depthwise_relu  (None, 28, 28, 144)  0          ['expanded_conv_3_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_3_project (Conv2  (None, 28, 28, 32)  4608        ['expanded_conv_3_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_3_project_BN (Ba  (None, 28, 28, 32)  128         ['expanded_conv_3_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_4_expand (Conv2D  (None, 28, 28, 192)  6144       ['expanded_conv_3_project_BN[0][0
+ )                                                               ]']                              
+                                                                                                  
+ expanded_conv_4_expand_BN (Bat  (None, 28, 28, 192)  768        ['expanded_conv_4_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_4_expand_relu (A  (None, 28, 28, 192)  0          ['expanded_conv_4_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_4_depthwise (Dep  (None, 28, 28, 192)  1728       ['expanded_conv_4_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_4_depthwise_BN (  (None, 28, 28, 192)  768        ['expanded_conv_4_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_4_depthwise_relu  (None, 28, 28, 192)  0          ['expanded_conv_4_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_4_project (Conv2  (None, 28, 28, 32)  6144        ['expanded_conv_4_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_4_project_BN (Ba  (None, 28, 28, 32)  128         ['expanded_conv_4_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_4_add (Add)      (None, 28, 28, 32)   0           ['expanded_conv_3_project_BN[0][0
+                                                                 ]',                              
+                                                                  'expanded_conv_4_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_5_expand (Conv2D  (None, 28, 28, 192)  6144       ['expanded_conv_4_add[0][0]']    
+ )                                                                                                
+                                                                                                  
+ expanded_conv_5_expand_BN (Bat  (None, 28, 28, 192)  768        ['expanded_conv_5_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_5_expand_relu (A  (None, 28, 28, 192)  0          ['expanded_conv_5_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_5_depthwise (Dep  (None, 28, 28, 192)  1728       ['expanded_conv_5_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_5_depthwise_BN (  (None, 28, 28, 192)  768        ['expanded_conv_5_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_5_depthwise_relu  (None, 28, 28, 192)  0          ['expanded_conv_5_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_5_project (Conv2  (None, 28, 28, 32)  6144        ['expanded_conv_5_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_5_project_BN (Ba  (None, 28, 28, 32)  128         ['expanded_conv_5_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_5_add (Add)      (None, 28, 28, 32)   0           ['expanded_conv_4_add[0][0]',    
+                                                                  'expanded_conv_5_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_6_expand (Conv2D  (None, 28, 28, 192)  6144       ['expanded_conv_5_add[0][0]']    
+ )                                                                                                
+                                                                                                  
+ expanded_conv_6_expand_BN (Bat  (None, 28, 28, 192)  768        ['expanded_conv_6_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_6_expand_relu (A  (None, 28, 28, 192)  0          ['expanded_conv_6_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_6_depthwise (Dep  (None, 28, 28, 192)  1728       ['expanded_conv_6_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_6_depthwise_BN (  (None, 28, 28, 192)  768        ['expanded_conv_6_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_6_depthwise_relu  (None, 28, 28, 192)  0          ['expanded_conv_6_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_6_project (Conv2  (None, 28, 28, 64)  12288       ['expanded_conv_6_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_6_project_BN (Ba  (None, 28, 28, 64)  256         ['expanded_conv_6_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_7_expand (Conv2D  (None, 28, 28, 384)  24576      ['expanded_conv_6_project_BN[0][0
+ )                                                               ]']                              
+                                                                                                  
+ expanded_conv_7_expand_BN (Bat  (None, 28, 28, 384)  1536       ['expanded_conv_7_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_7_expand_relu (A  (None, 28, 28, 384)  0          ['expanded_conv_7_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_7_depthwise (Dep  (None, 28, 28, 384)  3456       ['expanded_conv_7_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_7_depthwise_BN (  (None, 28, 28, 384)  1536       ['expanded_conv_7_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_7_depthwise_relu  (None, 28, 28, 384)  0          ['expanded_conv_7_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_7_project (Conv2  (None, 28, 28, 64)  24576       ['expanded_conv_7_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_7_project_BN (Ba  (None, 28, 28, 64)  256         ['expanded_conv_7_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_7_add (Add)      (None, 28, 28, 64)   0           ['expanded_conv_6_project_BN[0][0
+                                                                 ]',                              
+                                                                  'expanded_conv_7_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_8_expand (Conv2D  (None, 28, 28, 384)  24576      ['expanded_conv_7_add[0][0]']    
+ )                                                                                                
+                                                                                                  
+ expanded_conv_8_expand_BN (Bat  (None, 28, 28, 384)  1536       ['expanded_conv_8_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_8_expand_relu (A  (None, 28, 28, 384)  0          ['expanded_conv_8_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_8_depthwise (Dep  (None, 28, 28, 384)  3456       ['expanded_conv_8_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_8_depthwise_BN (  (None, 28, 28, 384)  1536       ['expanded_conv_8_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_8_depthwise_relu  (None, 28, 28, 384)  0          ['expanded_conv_8_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_8_project (Conv2  (None, 28, 28, 64)  24576       ['expanded_conv_8_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_8_project_BN (Ba  (None, 28, 28, 64)  256         ['expanded_conv_8_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_8_add (Add)      (None, 28, 28, 64)   0           ['expanded_conv_7_add[0][0]',    
+                                                                  'expanded_conv_8_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_9_expand (Conv2D  (None, 28, 28, 384)  24576      ['expanded_conv_8_add[0][0]']    
+ )                                                                                                
+                                                                                                  
+ expanded_conv_9_expand_BN (Bat  (None, 28, 28, 384)  1536       ['expanded_conv_9_expand[0][0]'] 
+ chNormalization)                                                                                 
+                                                                                                  
+ expanded_conv_9_expand_relu (A  (None, 28, 28, 384)  0          ['expanded_conv_9_expand_BN[0][0]
+ ctivation)                                                      ']                               
+                                                                                                  
+ expanded_conv_9_depthwise (Dep  (None, 28, 28, 384)  3456       ['expanded_conv_9_expand_relu[0][
+ thwiseConv2D)                                                   0]']                             
+                                                                                                  
+ expanded_conv_9_depthwise_BN (  (None, 28, 28, 384)  1536       ['expanded_conv_9_depthwise[0][0]
+ BatchNormalization)                                             ']                               
+                                                                                                  
+ expanded_conv_9_depthwise_relu  (None, 28, 28, 384)  0          ['expanded_conv_9_depthwise_BN[0]
+  (Activation)                                                   [0]']                            
+                                                                                                  
+ expanded_conv_9_project (Conv2  (None, 28, 28, 64)  24576       ['expanded_conv_9_depthwise_relu[
+ D)                                                              0][0]']                          
+                                                                                                  
+ expanded_conv_9_project_BN (Ba  (None, 28, 28, 64)  256         ['expanded_conv_9_project[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_9_add (Add)      (None, 28, 28, 64)   0           ['expanded_conv_8_add[0][0]',    
+                                                                  'expanded_conv_9_project_BN[0][0
+                                                                 ]']                              
+                                                                                                  
+ expanded_conv_10_expand (Conv2  (None, 28, 28, 384)  24576      ['expanded_conv_9_add[0][0]']    
+ D)                                                                                               
+                                                                                                  
+ expanded_conv_10_expand_BN (Ba  (None, 28, 28, 384)  1536       ['expanded_conv_10_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_10_expand_relu (  (None, 28, 28, 384)  0          ['expanded_conv_10_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_10_depthwise (De  (None, 28, 28, 384)  3456       ['expanded_conv_10_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_10_depthwise_BN   (None, 28, 28, 384)  1536       ['expanded_conv_10_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_10_depthwise_rel  (None, 28, 28, 384)  0          ['expanded_conv_10_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_10_project (Conv  (None, 28, 28, 96)  36864       ['expanded_conv_10_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_10_project_BN (B  (None, 28, 28, 96)  384         ['expanded_conv_10_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_11_expand (Conv2  (None, 28, 28, 576)  55296      ['expanded_conv_10_project_BN[0][
+ D)                                                              0]']                             
+                                                                                                  
+ expanded_conv_11_expand_BN (Ba  (None, 28, 28, 576)  2304       ['expanded_conv_11_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_11_expand_relu (  (None, 28, 28, 576)  0          ['expanded_conv_11_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_11_depthwise (De  (None, 28, 28, 576)  5184       ['expanded_conv_11_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_11_depthwise_BN   (None, 28, 28, 576)  2304       ['expanded_conv_11_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_11_depthwise_rel  (None, 28, 28, 576)  0          ['expanded_conv_11_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_11_project (Conv  (None, 28, 28, 96)  55296       ['expanded_conv_11_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_11_project_BN (B  (None, 28, 28, 96)  384         ['expanded_conv_11_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_11_add (Add)     (None, 28, 28, 96)   0           ['expanded_conv_10_project_BN[0][
+                                                                 0]',                             
+                                                                  'expanded_conv_11_project_BN[0][
+                                                                 0]']                             
+                                                                                                  
+ expanded_conv_12_expand (Conv2  (None, 28, 28, 576)  55296      ['expanded_conv_11_add[0][0]']   
+ D)                                                                                               
+                                                                                                  
+ expanded_conv_12_expand_BN (Ba  (None, 28, 28, 576)  2304       ['expanded_conv_12_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_12_expand_relu (  (None, 28, 28, 576)  0          ['expanded_conv_12_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_12_depthwise (De  (None, 28, 28, 576)  5184       ['expanded_conv_12_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_12_depthwise_BN   (None, 28, 28, 576)  2304       ['expanded_conv_12_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_12_depthwise_rel  (None, 28, 28, 576)  0          ['expanded_conv_12_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_12_project (Conv  (None, 28, 28, 96)  55296       ['expanded_conv_12_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_12_project_BN (B  (None, 28, 28, 96)  384         ['expanded_conv_12_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_12_add (Add)     (None, 28, 28, 96)   0           ['expanded_conv_11_add[0][0]',   
+                                                                  'expanded_conv_12_project_BN[0][
+                                                                 0]']                             
+                                                                                                  
+ expanded_conv_13_expand (Conv2  (None, 28, 28, 576)  55296      ['expanded_conv_12_add[0][0]']   
+ D)                                                                                               
+                                                                                                  
+ expanded_conv_13_expand_BN (Ba  (None, 28, 28, 576)  2304       ['expanded_conv_13_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_13_expand_relu (  (None, 28, 28, 576)  0          ['expanded_conv_13_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_13_depthwise (De  (None, 28, 28, 576)  5184       ['expanded_conv_13_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_13_depthwise_BN   (None, 28, 28, 576)  2304       ['expanded_conv_13_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_13_depthwise_rel  (None, 28, 28, 576)  0          ['expanded_conv_13_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_13_project (Conv  (None, 28, 28, 160)  92160      ['expanded_conv_13_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_13_project_BN (B  (None, 28, 28, 160)  640        ['expanded_conv_13_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_14_expand (Conv2  (None, 28, 28, 960)  153600     ['expanded_conv_13_project_BN[0][
+ D)                                                              0]']                             
+                                                                                                  
+ expanded_conv_14_expand_BN (Ba  (None, 28, 28, 960)  3840       ['expanded_conv_14_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_14_expand_relu (  (None, 28, 28, 960)  0          ['expanded_conv_14_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_14_depthwise (De  (None, 28, 28, 960)  8640       ['expanded_conv_14_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_14_depthwise_BN   (None, 28, 28, 960)  3840       ['expanded_conv_14_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_14_depthwise_rel  (None, 28, 28, 960)  0          ['expanded_conv_14_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_14_project (Conv  (None, 28, 28, 160)  153600     ['expanded_conv_14_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_14_project_BN (B  (None, 28, 28, 160)  640        ['expanded_conv_14_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_14_add (Add)     (None, 28, 28, 160)  0           ['expanded_conv_13_project_BN[0][
+                                                                 0]',                             
+                                                                  'expanded_conv_14_project_BN[0][
+                                                                 0]']                             
+                                                                                                  
+ expanded_conv_15_expand (Conv2  (None, 28, 28, 960)  153600     ['expanded_conv_14_add[0][0]']   
+ D)                                                                                               
+                                                                                                  
+ expanded_conv_15_expand_BN (Ba  (None, 28, 28, 960)  3840       ['expanded_conv_15_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_15_expand_relu (  (None, 28, 28, 960)  0          ['expanded_conv_15_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_15_depthwise (De  (None, 28, 28, 960)  8640       ['expanded_conv_15_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_15_depthwise_BN   (None, 28, 28, 960)  3840       ['expanded_conv_15_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_15_depthwise_rel  (None, 28, 28, 960)  0          ['expanded_conv_15_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_15_project (Conv  (None, 28, 28, 160)  153600     ['expanded_conv_15_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_15_project_BN (B  (None, 28, 28, 160)  640        ['expanded_conv_15_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ expanded_conv_15_add (Add)     (None, 28, 28, 160)  0           ['expanded_conv_14_add[0][0]',   
+                                                                  'expanded_conv_15_project_BN[0][
+                                                                 0]']                             
+                                                                                                  
+ expanded_conv_16_expand (Conv2  (None, 28, 28, 960)  153600     ['expanded_conv_15_add[0][0]']   
+ D)                                                                                               
+                                                                                                  
+ expanded_conv_16_expand_BN (Ba  (None, 28, 28, 960)  3840       ['expanded_conv_16_expand[0][0]']
+ tchNormalization)                                                                                
+                                                                                                  
+ expanded_conv_16_expand_relu (  (None, 28, 28, 960)  0          ['expanded_conv_16_expand_BN[0][0
+ Activation)                                                     ]']                              
+                                                                                                  
+ expanded_conv_16_depthwise (De  (None, 28, 28, 960)  8640       ['expanded_conv_16_expand_relu[0]
+ pthwiseConv2D)                                                  [0]']                            
+                                                                                                  
+ expanded_conv_16_depthwise_BN   (None, 28, 28, 960)  3840       ['expanded_conv_16_depthwise[0][0
+ (BatchNormalization)                                            ]']                              
+                                                                                                  
+ expanded_conv_16_depthwise_rel  (None, 28, 28, 960)  0          ['expanded_conv_16_depthwise_BN[0
+ u (Activation)                                                  ][0]']                           
+                                                                                                  
+ expanded_conv_16_project (Conv  (None, 28, 28, 320)  307200     ['expanded_conv_16_depthwise_relu
+ 2D)                                                             [0][0]']                         
+                                                                                                  
+ expanded_conv_16_project_BN (B  (None, 28, 28, 320)  1280       ['expanded_conv_16_project[0][0]'
+ atchNormalization)                                              ]                                
+                                                                                                  
+ average_pooling2d (AveragePool  (None, 1, 1, 320)   0           ['expanded_conv_16_project_BN[0][
+ ing2D)                                                          0]']                             
+                                                                                                  
+ image_pooling (Conv2D)         (None, 1, 1, 256)    81920       ['average_pooling2d[0][0]']      
+                                                                                                  
+ image_pooling_BN (BatchNormali  (None, 1, 1, 256)   1024        ['image_pooling[0][0]']          
+ zation)                                                                                          
+                                                                                                  
+ aspp0 (Conv2D)                 (None, 28, 28, 256)  81920       ['expanded_conv_16_project_BN[0][
+                                                                 0]']                             
+                                                                                                  
+ activation (Activation)        (None, 1, 1, 256)    0           ['image_pooling_BN[0][0]']       
+                                                                                                  
+ aspp0_BN (BatchNormalization)  (None, 28, 28, 256)  1024        ['aspp0[0][0]']                  
+                                                                                                  
+ up_sampling2d (UpSampling2D)   (None, 28, 28, 256)  0           ['activation[0][0]']             
+                                                                                                  
+ aspp0_activation (Activation)  (None, 28, 28, 256)  0           ['aspp0_BN[0][0]']               
+                                                                                                  
+ concatenate (Concatenate)      (None, 28, 28, 512)  0           ['up_sampling2d[0][0]',          
+                                                                  'aspp0_activation[0][0]']       
+                                                                                                  
+ concat_projection (Conv2D)     (None, 28, 28, 256)  131072      ['concatenate[0][0]']            
+                                                                                                  
+ concat_projection_BN (BatchNor  (None, 28, 28, 256)  1024       ['concat_projection[0][0]']      
+ malization)                                                                                      
+                                                                                                  
+ activation_1 (Activation)      (None, 28, 28, 256)  0           ['concat_projection_BN[0][0]']   
+                                                                                                  
+ dropout (Dropout)              (None, 28, 28, 256)  0           ['activation_1[0][0]']           
+                                                                                                  
+ custom_logits_semantic (Conv2D  (None, 28, 28, 1)   257         ['dropout[0][0]']                
+ )                                                                                                
+                                                                                                  
+ up_sampling2d_1 (UpSampling2D)  (None, 224, 224, 1)  0          ['custom_logits_semantic[0][0]'] 
+                                                                                                  
+==================================================================================================
+Total params: 2,141,505
+Trainable params: 2,108,417
+Non-trainable params: 33,088
+__________________________________________________________________________________________________
+Model: "deeplabv3plus"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_2 (InputLayer)           [(None, 224, 224, 3  0           []                               
+                                )]                                                                
+                                                                                                  
+ prune_low_magnitude_Conv (Prun  (None, 112, 112, 32  1730       ['input_2[0][0]']                
+ eLowMagnitude)                 )                                                                 
+                                                                                                  
+ prune_low_magnitude_Conv_BN (P  (None, 112, 112, 32  129        ['prune_low_magnitude_Conv[0][0]'
+ runeLowMagnitude)              )                                ]                                
+                                                                                                  
+ prune_low_magnitude_Conv_Relu6  (None, 112, 112, 32  1          ['prune_low_magnitude_Conv_BN[0][
+  (PruneLowMagnitude)           )                                0]']                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 32  289        ['prune_low_magnitude_Conv_Relu6[
+ onv_depthwise (PruneLowMagnitu  )                               0][0]']                          
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 32  129        ['prune_low_magnitude_expanded_co
+ onv_depthwise_BN (PruneLowMagn  )                               nv_depthwise[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 32  1          ['prune_low_magnitude_expanded_co
+ onv_depthwise_relu (PruneLowMa  )                               nv_depthwise_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 16  1026       ['prune_low_magnitude_expanded_co
+ onv_project (PruneLowMagnitude  )                               nv_depthwise_relu[0][0]']        
+ )                                                                                                
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 16  65         ['prune_low_magnitude_expanded_co
+ onv_project_BN (PruneLowMagnit  )                               nv_project[0][0]']               
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 96  3074       ['prune_low_magnitude_expanded_co
+ onv_1_expand (PruneLowMagnitud  )                               nv_project_BN[0][0]']            
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 96  385        ['prune_low_magnitude_expanded_co
+ onv_1_expand_BN (PruneLowMagni  )                               nv_1_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 112, 112, 96  1          ['prune_low_magnitude_expanded_co
+ onv_1_expand_relu (PruneLowMag  )                               nv_1_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 96)  865         ['prune_low_magnitude_expanded_co
+ onv_1_depthwise (PruneLowMagni                                  nv_1_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 96)  385         ['prune_low_magnitude_expanded_co
+ onv_1_depthwise_BN (PruneLowMa                                  nv_1_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 96)  1           ['prune_low_magnitude_expanded_co
+ onv_1_depthwise_relu (PruneLow                                  nv_1_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 24)  4610        ['prune_low_magnitude_expanded_co
+ onv_1_project (PruneLowMagnitu                                  nv_1_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 24)  97          ['prune_low_magnitude_expanded_co
+ onv_1_project_BN (PruneLowMagn                                  nv_1_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  6914       ['prune_low_magnitude_expanded_co
+ onv_2_expand (PruneLowMagnitud                                  nv_1_project_BN[0][0]']          
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  577        ['prune_low_magnitude_expanded_co
+ onv_2_expand_BN (PruneLowMagni                                  nv_2_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  1          ['prune_low_magnitude_expanded_co
+ onv_2_expand_relu (PruneLowMag                                  nv_2_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  1297       ['prune_low_magnitude_expanded_co
+ onv_2_depthwise (PruneLowMagni                                  nv_2_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  577        ['prune_low_magnitude_expanded_co
+ onv_2_depthwise_BN (PruneLowMa                                  nv_2_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  1          ['prune_low_magnitude_expanded_co
+ onv_2_depthwise_relu (PruneLow                                  nv_2_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 24)  6914        ['prune_low_magnitude_expanded_co
+ onv_2_project (PruneLowMagnitu                                  nv_2_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 24)  97          ['prune_low_magnitude_expanded_co
+ onv_2_project_BN (PruneLowMagn                                  nv_2_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 24)  1           ['prune_low_magnitude_expanded_co
+ onv_2_add (PruneLowMagnitude)                                   nv_1_project_BN[0][0]',          
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_2_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  6914       ['prune_low_magnitude_expanded_co
+ onv_3_expand (PruneLowMagnitud                                  nv_2_add[0][0]']                 
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  577        ['prune_low_magnitude_expanded_co
+ onv_3_expand_BN (PruneLowMagni                                  nv_3_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 56, 56, 144)  1          ['prune_low_magnitude_expanded_co
+ onv_3_expand_relu (PruneLowMag                                  nv_3_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 144)  1297       ['prune_low_magnitude_expanded_co
+ onv_3_depthwise (PruneLowMagni                                  nv_3_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 144)  577        ['prune_low_magnitude_expanded_co
+ onv_3_depthwise_BN (PruneLowMa                                  nv_3_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 144)  1          ['prune_low_magnitude_expanded_co
+ onv_3_depthwise_relu (PruneLow                                  nv_3_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  9218        ['prune_low_magnitude_expanded_co
+ onv_3_project (PruneLowMagnitu                                  nv_3_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  129         ['prune_low_magnitude_expanded_co
+ onv_3_project_BN (PruneLowMagn                                  nv_3_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  12290      ['prune_low_magnitude_expanded_co
+ onv_4_expand (PruneLowMagnitud                                  nv_3_project_BN[0][0]']          
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_4_expand_BN (PruneLowMagni                                  nv_4_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_4_expand_relu (PruneLowMag                                  nv_4_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1729       ['prune_low_magnitude_expanded_co
+ onv_4_depthwise (PruneLowMagni                                  nv_4_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_4_depthwise_BN (PruneLowMa                                  nv_4_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_4_depthwise_relu (PruneLow                                  nv_4_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  12290       ['prune_low_magnitude_expanded_co
+ onv_4_project (PruneLowMagnitu                                  nv_4_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  129         ['prune_low_magnitude_expanded_co
+ onv_4_project_BN (PruneLowMagn                                  nv_4_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  1           ['prune_low_magnitude_expanded_co
+ onv_4_add (PruneLowMagnitude)                                   nv_3_project_BN[0][0]',          
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_4_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  12290      ['prune_low_magnitude_expanded_co
+ onv_5_expand (PruneLowMagnitud                                  nv_4_add[0][0]']                 
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_5_expand_BN (PruneLowMagni                                  nv_5_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_5_expand_relu (PruneLowMag                                  nv_5_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1729       ['prune_low_magnitude_expanded_co
+ onv_5_depthwise (PruneLowMagni                                  nv_5_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_5_depthwise_BN (PruneLowMa                                  nv_5_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_5_depthwise_relu (PruneLow                                  nv_5_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  12290       ['prune_low_magnitude_expanded_co
+ onv_5_project (PruneLowMagnitu                                  nv_5_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  129         ['prune_low_magnitude_expanded_co
+ onv_5_project_BN (PruneLowMagn                                  nv_5_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 32)  1           ['prune_low_magnitude_expanded_co
+ onv_5_add (PruneLowMagnitude)                                   nv_4_add[0][0]',                 
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_5_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  12290      ['prune_low_magnitude_expanded_co
+ onv_6_expand (PruneLowMagnitud                                  nv_5_add[0][0]']                 
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_6_expand_BN (PruneLowMagni                                  nv_6_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_6_expand_relu (PruneLowMag                                  nv_6_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1729       ['prune_low_magnitude_expanded_co
+ onv_6_depthwise (PruneLowMagni                                  nv_6_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  769        ['prune_low_magnitude_expanded_co
+ onv_6_depthwise_BN (PruneLowMa                                  nv_6_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 192)  1          ['prune_low_magnitude_expanded_co
+ onv_6_depthwise_relu (PruneLow                                  nv_6_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  24578       ['prune_low_magnitude_expanded_co
+ onv_6_project (PruneLowMagnitu                                  nv_6_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  257         ['prune_low_magnitude_expanded_co
+ onv_6_project_BN (PruneLowMagn                                  nv_6_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  49154      ['prune_low_magnitude_expanded_co
+ onv_7_expand (PruneLowMagnitud                                  nv_6_project_BN[0][0]']          
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_7_expand_BN (PruneLowMagni                                  nv_7_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_7_expand_relu (PruneLowMag                                  nv_7_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  3457       ['prune_low_magnitude_expanded_co
+ onv_7_depthwise (PruneLowMagni                                  nv_7_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_7_depthwise_BN (PruneLowMa                                  nv_7_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_7_depthwise_relu (PruneLow                                  nv_7_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  49154       ['prune_low_magnitude_expanded_co
+ onv_7_project (PruneLowMagnitu                                  nv_7_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  257         ['prune_low_magnitude_expanded_co
+ onv_7_project_BN (PruneLowMagn                                  nv_7_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  1           ['prune_low_magnitude_expanded_co
+ onv_7_add (PruneLowMagnitude)                                   nv_6_project_BN[0][0]',          
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_7_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  49154      ['prune_low_magnitude_expanded_co
+ onv_8_expand (PruneLowMagnitud                                  nv_7_add[0][0]']                 
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_8_expand_BN (PruneLowMagni                                  nv_8_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_8_expand_relu (PruneLowMag                                  nv_8_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  3457       ['prune_low_magnitude_expanded_co
+ onv_8_depthwise (PruneLowMagni                                  nv_8_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_8_depthwise_BN (PruneLowMa                                  nv_8_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_8_depthwise_relu (PruneLow                                  nv_8_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  49154       ['prune_low_magnitude_expanded_co
+ onv_8_project (PruneLowMagnitu                                  nv_8_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  257         ['prune_low_magnitude_expanded_co
+ onv_8_project_BN (PruneLowMagn                                  nv_8_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  1           ['prune_low_magnitude_expanded_co
+ onv_8_add (PruneLowMagnitude)                                   nv_7_add[0][0]',                 
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_8_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  49154      ['prune_low_magnitude_expanded_co
+ onv_9_expand (PruneLowMagnitud                                  nv_8_add[0][0]']                 
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_9_expand_BN (PruneLowMagni                                  nv_9_expand[0][0]']              
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_9_expand_relu (PruneLowMag                                  nv_9_expand_BN[0][0]']           
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  3457       ['prune_low_magnitude_expanded_co
+ onv_9_depthwise (PruneLowMagni                                  nv_9_expand_relu[0][0]']         
+ tude)                                                                                            
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_9_depthwise_BN (PruneLowMa                                  nv_9_depthwise[0][0]']           
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_9_depthwise_relu (PruneLow                                  nv_9_depthwise_BN[0][0]']        
+ Magnitude)                                                                                       
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  49154       ['prune_low_magnitude_expanded_co
+ onv_9_project (PruneLowMagnitu                                  nv_9_depthwise_relu[0][0]']      
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  257         ['prune_low_magnitude_expanded_co
+ onv_9_project_BN (PruneLowMagn                                  nv_9_project[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 64)  1           ['prune_low_magnitude_expanded_co
+ onv_9_add (PruneLowMagnitude)                                   nv_8_add[0][0]',                 
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_9_project_BN[0][0]']          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  49154      ['prune_low_magnitude_expanded_co
+ onv_10_expand (PruneLowMagnitu                                  nv_9_add[0][0]']                 
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_10_expand_BN (PruneLowMagn                                  nv_10_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_10_expand_relu (PruneLowMa                                  nv_10_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  3457       ['prune_low_magnitude_expanded_co
+ onv_10_depthwise (PruneLowMagn                                  nv_10_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1537       ['prune_low_magnitude_expanded_co
+ onv_10_depthwise_BN (PruneLowM                                  nv_10_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 384)  1          ['prune_low_magnitude_expanded_co
+ onv_10_depthwise_relu (PruneLo                                  nv_10_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  73730       ['prune_low_magnitude_expanded_co
+ onv_10_project (PruneLowMagnit                                  nv_10_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  385         ['prune_low_magnitude_expanded_co
+ onv_10_project_BN (PruneLowMag                                  nv_10_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  110594     ['prune_low_magnitude_expanded_co
+ onv_11_expand (PruneLowMagnitu                                  nv_10_project_BN[0][0]']         
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_11_expand_BN (PruneLowMagn                                  nv_11_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_11_expand_relu (PruneLowMa                                  nv_11_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  5185       ['prune_low_magnitude_expanded_co
+ onv_11_depthwise (PruneLowMagn                                  nv_11_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_11_depthwise_BN (PruneLowM                                  nv_11_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_11_depthwise_relu (PruneLo                                  nv_11_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  110594      ['prune_low_magnitude_expanded_co
+ onv_11_project (PruneLowMagnit                                  nv_11_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  385         ['prune_low_magnitude_expanded_co
+ onv_11_project_BN (PruneLowMag                                  nv_11_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  1           ['prune_low_magnitude_expanded_co
+ onv_11_add (PruneLowMagnitude)                                  nv_10_project_BN[0][0]',         
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_11_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  110594     ['prune_low_magnitude_expanded_co
+ onv_12_expand (PruneLowMagnitu                                  nv_11_add[0][0]']                
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_12_expand_BN (PruneLowMagn                                  nv_12_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_12_expand_relu (PruneLowMa                                  nv_12_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  5185       ['prune_low_magnitude_expanded_co
+ onv_12_depthwise (PruneLowMagn                                  nv_12_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_12_depthwise_BN (PruneLowM                                  nv_12_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_12_depthwise_relu (PruneLo                                  nv_12_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  110594      ['prune_low_magnitude_expanded_co
+ onv_12_project (PruneLowMagnit                                  nv_12_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  385         ['prune_low_magnitude_expanded_co
+ onv_12_project_BN (PruneLowMag                                  nv_12_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 96)  1           ['prune_low_magnitude_expanded_co
+ onv_12_add (PruneLowMagnitude)                                  nv_11_add[0][0]',                
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_12_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  110594     ['prune_low_magnitude_expanded_co
+ onv_13_expand (PruneLowMagnitu                                  nv_12_add[0][0]']                
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_13_expand_BN (PruneLowMagn                                  nv_13_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_13_expand_relu (PruneLowMa                                  nv_13_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  5185       ['prune_low_magnitude_expanded_co
+ onv_13_depthwise (PruneLowMagn                                  nv_13_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  2305       ['prune_low_magnitude_expanded_co
+ onv_13_depthwise_BN (PruneLowM                                  nv_13_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 576)  1          ['prune_low_magnitude_expanded_co
+ onv_13_depthwise_relu (PruneLo                                  nv_13_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  184322     ['prune_low_magnitude_expanded_co
+ onv_13_project (PruneLowMagnit                                  nv_13_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  641        ['prune_low_magnitude_expanded_co
+ onv_13_project_BN (PruneLowMag                                  nv_13_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  307202     ['prune_low_magnitude_expanded_co
+ onv_14_expand (PruneLowMagnitu                                  nv_13_project_BN[0][0]']         
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_14_expand_BN (PruneLowMagn                                  nv_14_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_14_expand_relu (PruneLowMa                                  nv_14_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  8641       ['prune_low_magnitude_expanded_co
+ onv_14_depthwise (PruneLowMagn                                  nv_14_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_14_depthwise_BN (PruneLowM                                  nv_14_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_14_depthwise_relu (PruneLo                                  nv_14_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  307202     ['prune_low_magnitude_expanded_co
+ onv_14_project (PruneLowMagnit                                  nv_14_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  641        ['prune_low_magnitude_expanded_co
+ onv_14_project_BN (PruneLowMag                                  nv_14_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  1          ['prune_low_magnitude_expanded_co
+ onv_14_add (PruneLowMagnitude)                                  nv_13_project_BN[0][0]',         
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_14_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  307202     ['prune_low_magnitude_expanded_co
+ onv_15_expand (PruneLowMagnitu                                  nv_14_add[0][0]']                
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_15_expand_BN (PruneLowMagn                                  nv_15_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_15_expand_relu (PruneLowMa                                  nv_15_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  8641       ['prune_low_magnitude_expanded_co
+ onv_15_depthwise (PruneLowMagn                                  nv_15_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_15_depthwise_BN (PruneLowM                                  nv_15_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_15_depthwise_relu (PruneLo                                  nv_15_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  307202     ['prune_low_magnitude_expanded_co
+ onv_15_project (PruneLowMagnit                                  nv_15_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  641        ['prune_low_magnitude_expanded_co
+ onv_15_project_BN (PruneLowMag                                  nv_15_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 160)  1          ['prune_low_magnitude_expanded_co
+ onv_15_add (PruneLowMagnitude)                                  nv_14_add[0][0]',                
+                                                                  'prune_low_magnitude_expanded_co
+                                                                 nv_15_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  307202     ['prune_low_magnitude_expanded_co
+ onv_16_expand (PruneLowMagnitu                                  nv_15_add[0][0]']                
+ de)                                                                                              
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_16_expand_BN (PruneLowMagn                                  nv_16_expand[0][0]']             
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_16_expand_relu (PruneLowMa                                  nv_16_expand_BN[0][0]']          
+ gnitude)                                                                                         
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  8641       ['prune_low_magnitude_expanded_co
+ onv_16_depthwise (PruneLowMagn                                  nv_16_expand_relu[0][0]']        
+ itude)                                                                                           
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  3841       ['prune_low_magnitude_expanded_co
+ onv_16_depthwise_BN (PruneLowM                                  nv_16_depthwise[0][0]']          
+ agnitude)                                                                                        
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 960)  1          ['prune_low_magnitude_expanded_co
+ onv_16_depthwise_relu (PruneLo                                  nv_16_depthwise_BN[0][0]']       
+ wMagnitude)                                                                                      
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 320)  614402     ['prune_low_magnitude_expanded_co
+ onv_16_project (PruneLowMagnit                                  nv_16_depthwise_relu[0][0]']     
+ ude)                                                                                             
+                                                                                                  
+ prune_low_magnitude_expanded_c  (None, 28, 28, 320)  1281       ['prune_low_magnitude_expanded_co
+ onv_16_project_BN (PruneLowMag                                  nv_16_project[0][0]']            
+ nitude)                                                                                          
+                                                                                                  
+ prune_low_magnitude_average_po  (None, 1, 1, 320)   1           ['prune_low_magnitude_expanded_co
+ oling2d_1 (PruneLowMagnitude)                                   nv_16_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_image_pool  (None, 1, 1, 256)   163842      ['prune_low_magnitude_average_poo
+ ing (PruneLowMagnitude)                                         ling2d_1[0][0]']                 
+                                                                                                  
+ prune_low_magnitude_image_pool  (None, 1, 1, 256)   1025        ['prune_low_magnitude_image_pooli
+ ing_BN (PruneLowMagnitude)                                      ng[0][0]']                       
+                                                                                                  
+ prune_low_magnitude_aspp0 (Pru  (None, 28, 28, 256)  163842     ['prune_low_magnitude_expanded_co
+ neLowMagnitude)                                                 nv_16_project_BN[0][0]']         
+                                                                                                  
+ prune_low_magnitude_activation  (None, 1, 1, 256)   1           ['prune_low_magnitude_image_pooli
+ _2 (PruneLowMagnitude)                                          ng_BN[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_aspp0_BN (  (None, 28, 28, 256)  1025       ['prune_low_magnitude_aspp0[0][0]
+ PruneLowMagnitude)                                              ']                               
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, 28, 28, 256)  1          ['prune_low_magnitude_activation_
+ g2d_2 (PruneLowMagnitude)                                       2[0][0]']                        
+                                                                                                  
+ prune_low_magnitude_aspp0_acti  (None, 28, 28, 256)  1          ['prune_low_magnitude_aspp0_BN[0]
+ vation (PruneLowMagnitude)                                      [0]']                            
+                                                                                                  
+ prune_low_magnitude_concatenat  (None, 28, 28, 512)  1          ['prune_low_magnitude_up_sampling
+ e_1 (PruneLowMagnitude)                                         2d_2[0][0]',                     
+                                                                  'prune_low_magnitude_aspp0_activ
+                                                                 ation[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_concat_pro  (None, 28, 28, 256)  262146     ['prune_low_magnitude_concatenate
+ jection (PruneLowMagnitude)                                     _1[0][0]']                       
+                                                                                                  
+ prune_low_magnitude_concat_pro  (None, 28, 28, 256)  1025       ['prune_low_magnitude_concat_proj
+ jection_BN (PruneLowMagnitude)                                  ection[0][0]']                   
+                                                                                                  
+ prune_low_magnitude_activation  (None, 28, 28, 256)  1          ['prune_low_magnitude_concat_proj
+ _3 (PruneLowMagnitude)                                          ection_BN[0][0]']                
+                                                                                                  
+ prune_low_magnitude_dropout_1   (None, 28, 28, 256)  1          ['prune_low_magnitude_activation_
+ (PruneLowMagnitude)                                             3[0][0]']                        
+                                                                                                  
+ prune_low_magnitude_custom_log  (None, 28, 28, 1)   515         ['prune_low_magnitude_dropout_1[0
+ its_semantic (PruneLowMagnitud                                  ][0]']                           
+ e)                                                                                               
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, 224, 224, 1)  1          ['prune_low_magnitude_custom_logi
+ g2d_3 (PruneLowMagnitude)                                       ts_semantic[0][0]']              
+                                                                                                  
+==================================================================================================
+Total params: 4,152,808
+Trainable params: 2,108,417
+Non-trainable params: 2,044,391
+__________________________________________________________________________________________________

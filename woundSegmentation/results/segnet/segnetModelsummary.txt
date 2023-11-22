@@ -1,0 +1,121 @@
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_2 (InputLayer)        [(None, None, None, 3)]   0         
+                                                                 
+ conv2d (Conv2D)             (None, None, None, 32)    7808      
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, None, None, 32)   0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, None, None, 32)    25632     
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, None, None, 32)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_2 (Conv2D)           (None, None, None, 64)    51264     
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, None, None, 64)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_3 (Conv2D)           (None, None, None, 64)    102464    
+                                                                 
+ max_pooling2d_3 (MaxPooling  (None, None, None, 64)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_4 (Conv2D)           (None, None, None, 32)    51232     
+                                                                 
+ up_sampling2d_2 (UpSampling  (None, None, None, 32)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_5 (Conv2D)           (None, None, None, 32)    50208     
+                                                                 
+ up_sampling2d_3 (UpSampling  (None, None, None, 32)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_6 (Conv2D)           (None, None, None, 32)    25632     
+                                                                 
+ up_sampling2d_4 (UpSampling  (None, None, None, 32)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_7 (Conv2D)           (None, None, None, 32)    25632     
+                                                                 
+ up_sampling2d_5 (UpSampling  (None, None, None, 32)   0         
+ 2D)                                                             
+                                                                 
+ conv2d_8 (Conv2D)           (None, None, None, 1)     33        
+                                                                 
+=================================================================
+Total params: 339,905
+Trainable params: 339,905
+Non-trainable params: 0
+_________________________________________________________________
+Model: "model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, None, None, 3)]   0         
+                                                                 
+ prune_low_magnitude_conv2d   (None, None, None, 32)   15586     
+ (PruneLowMagnitude)                                             
+                                                                 
+ prune_low_magnitude_max_poo  (None, None, None, 32)   1         
+ ling2d (PruneLowMagnitude)                                      
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 32)   51234     
+ 1 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_max_poo  (None, None, None, 32)   1         
+ ling2d_1 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 64)   102466    
+ 2 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_max_poo  (None, None, None, 64)   1         
+ ling2d_2 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 64)   204866    
+ 3 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_max_poo  (None, None, None, 64)   1         
+ ling2d_3 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 32)   102434    
+ 4 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_up_samp  (None, None, None, 32)   1         
+ ling2d (PruneLowMagnitude)                                      
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 32)   100386    
+ 5 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_up_samp  (None, None, None, 32)   1         
+ ling2d_1 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 32)   51234     
+ 6 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_up_samp  (None, None, None, 32)   1         
+ ling2d_2 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 32)   51234     
+ 7 (PruneLowMagnitude)                                           
+                                                                 
+ prune_low_magnitude_up_samp  (None, None, None, 32)   1         
+ ling2d_3 (PruneLowMagnitude                                     
+ )                                                               
+                                                                 
+ prune_low_magnitude_conv2d_  (None, None, None, 1)    67        
+ 8 (PruneLowMagnitude)                                           
+                                                                 
+=================================================================
+Total params: 679,515
+Trainable params: 339,905
+Non-trainable params: 339,610
+_________________________________________________________________

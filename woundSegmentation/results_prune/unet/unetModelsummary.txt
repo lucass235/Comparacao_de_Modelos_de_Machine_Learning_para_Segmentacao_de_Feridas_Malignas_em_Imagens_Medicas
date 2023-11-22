@@ -1,0 +1,149 @@
+Model: "model_3"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_4 (InputLayer)           [(None, None, None,  0           []                               
+                                 3)]                                                              
+                                                                                                  
+ prune_low_magnitude_conv2d_27   (None, None, None,   1762       ['input_4[0][0]']                
+ (PruneLowMagnitude)            32)                                                               
+                                                                                                  
+ prune_low_magnitude_conv2d_28   (None, None, None,   18466      ['prune_low_magnitude_conv2d_27[0
+ (PruneLowMagnitude)            32)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_max_poolin  (None, None, None,   1          ['prune_low_magnitude_conv2d_28[0
+ g2d_12 (PruneLowMagnitude)     32)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_29   (None, None, None,   36930      ['prune_low_magnitude_max_pooling
+ (PruneLowMagnitude)            64)                              2d_12[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_conv2d_30   (None, None, None,   73794      ['prune_low_magnitude_conv2d_29[0
+ (PruneLowMagnitude)            64)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_max_poolin  (None, None, None,   1          ['prune_low_magnitude_conv2d_30[0
+ g2d_13 (PruneLowMagnitude)     64)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_31   (None, None, None,   147586     ['prune_low_magnitude_max_pooling
+ (PruneLowMagnitude)            128)                             2d_13[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_conv2d_32   (None, None, None,   295042     ['prune_low_magnitude_conv2d_31[0
+ (PruneLowMagnitude)            128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_33   (None, None, None,   295042     ['prune_low_magnitude_conv2d_32[0
+ (PruneLowMagnitude)            128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_max_poolin  (None, None, None,   1          ['prune_low_magnitude_conv2d_33[0
+ g2d_14 (PruneLowMagnitude)     128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_34   (None, None, None,   590082     ['prune_low_magnitude_max_pooling
+ (PruneLowMagnitude)            256)                             2d_14[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_conv2d_35   (None, None, None,   1179906    ['prune_low_magnitude_conv2d_34[0
+ (PruneLowMagnitude)            256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_36   (None, None, None,   1179906    ['prune_low_magnitude_conv2d_35[0
+ (PruneLowMagnitude)            256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_max_poolin  (None, None, None,   1          ['prune_low_magnitude_conv2d_36[0
+ g2d_15 (PruneLowMagnitude)     256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_37   (None, None, None,   1179906    ['prune_low_magnitude_max_pooling
+ (PruneLowMagnitude)            256)                             2d_15[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_conv2d_38   (None, None, None,   1179906    ['prune_low_magnitude_conv2d_37[0
+ (PruneLowMagnitude)            256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_39   (None, None, None,   1179906    ['prune_low_magnitude_conv2d_38[0
+ (PruneLowMagnitude)            256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, None, None,   1          ['prune_low_magnitude_conv2d_39[0
+ g2d_12 (PruneLowMagnitude)     256)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_41   (None, None, None,   589954     ['prune_low_magnitude_conv2d_36[0
+ (PruneLowMagnitude)            128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_40   (None, None, None,   262274     ['prune_low_magnitude_up_sampling
+ (PruneLowMagnitude)            128)                             2d_12[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_concatenat  (None, None, None,   1          ['prune_low_magnitude_conv2d_41[0
+ e (PruneLowMagnitude)          256)                             ][0]',                           
+                                                                  'prune_low_magnitude_conv2d_40[0
+                                                                 ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_42   (None, None, None,   589954     ['prune_low_magnitude_concatenate
+ (PruneLowMagnitude)            128)                             [0][0]']                         
+                                                                                                  
+ prune_low_magnitude_conv2d_43   (None, None, None,   295042     ['prune_low_magnitude_conv2d_42[0
+ (PruneLowMagnitude)            128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, None, None,   1          ['prune_low_magnitude_conv2d_43[0
+ g2d_13 (PruneLowMagnitude)     128)                             ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_45   (None, None, None,   147522     ['prune_low_magnitude_conv2d_33[0
+ (PruneLowMagnitude)            64)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_44   (None, None, None,   65602      ['prune_low_magnitude_up_sampling
+ (PruneLowMagnitude)            64)                              2d_13[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_concatenat  (None, None, None,   1          ['prune_low_magnitude_conv2d_45[0
+ e_1 (PruneLowMagnitude)        128)                             ][0]',                           
+                                                                  'prune_low_magnitude_conv2d_44[0
+                                                                 ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_46   (None, None, None,   147522     ['prune_low_magnitude_concatenate
+ (PruneLowMagnitude)            64)                              _1[0][0]']                       
+                                                                                                  
+ prune_low_magnitude_conv2d_47   (None, None, None,   73794      ['prune_low_magnitude_conv2d_46[0
+ (PruneLowMagnitude)            64)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, None, None,   1          ['prune_low_magnitude_conv2d_47[0
+ g2d_14 (PruneLowMagnitude)     64)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_49   (None, None, None,   36898      ['prune_low_magnitude_conv2d_30[0
+ (PruneLowMagnitude)            32)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_48   (None, None, None,   16418      ['prune_low_magnitude_up_sampling
+ (PruneLowMagnitude)            32)                              2d_14[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_concatenat  (None, None, None,   1          ['prune_low_magnitude_conv2d_49[0
+ e_2 (PruneLowMagnitude)        64)                              ][0]',                           
+                                                                  'prune_low_magnitude_conv2d_48[0
+                                                                 ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_50   (None, None, None,   36898      ['prune_low_magnitude_concatenate
+ (PruneLowMagnitude)            32)                              _2[0][0]']                       
+                                                                                                  
+ prune_low_magnitude_conv2d_51   (None, None, None,   18466      ['prune_low_magnitude_conv2d_50[0
+ (PruneLowMagnitude)            32)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_up_samplin  (None, None, None,   1          ['prune_low_magnitude_conv2d_51[0
+ g2d_15 (PruneLowMagnitude)     32)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_53   (None, None, None,   9234       ['prune_low_magnitude_conv2d_28[0
+ (PruneLowMagnitude)            16)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_52   (None, None, None,   4114       ['prune_low_magnitude_up_sampling
+ (PruneLowMagnitude)            16)                              2d_15[0][0]']                    
+                                                                                                  
+ prune_low_magnitude_concatenat  (None, None, None,   1          ['prune_low_magnitude_conv2d_53[0
+ e_3 (PruneLowMagnitude)        32)                              ][0]',                           
+                                                                  'prune_low_magnitude_conv2d_52[0
+                                                                 ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_54   (None, None, None,   9234       ['prune_low_magnitude_concatenate
+ (PruneLowMagnitude)            16)                              _3[0][0]']                       
+                                                                                                  
+ prune_low_magnitude_conv2d_55   (None, None, None,   4626       ['prune_low_magnitude_conv2d_54[0
+ (PruneLowMagnitude)            16)                              ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_56   (None, None, None,   869        ['prune_low_magnitude_conv2d_55[0
+ (PruneLowMagnitude)            3)                               ][0]']                           
+                                                                                                  
+ prune_low_magnitude_conv2d_57   (None, None, None,   9          ['prune_low_magnitude_conv2d_56[0
+ (PruneLowMagnitude)            1)                               ][0]']                           
+                                                                                                  
+==================================================================================================
+Total params: 9,666,676
+Trainable params: 4,834,839
+Non-trainable params: 4,831,837
+__________________________________________________________________________________________________
