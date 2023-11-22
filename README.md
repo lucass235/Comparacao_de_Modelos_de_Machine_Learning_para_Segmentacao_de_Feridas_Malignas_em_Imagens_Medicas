@@ -1,0 +1,2 @@
+# Comparacao_de_Modelos_de_Machine_Learning_para_Segmentacao_de_Feridas_Malignas_em_Imagens_Medicas
+Este Estudo foi desenvolvido para o Trabalho de Conclusão de Curso do curso de Ciência da Computação da Universidade Católica de Pernambuco. O sistema foi desenvolvido para auxiliar o processo de segmentação de imagens medicas de feridas malignas, que é um processo manual e demorado que pode ate ser subjetivo levando ate a erros medicos.
