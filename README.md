@@ -2,6 +2,8 @@
 
 Este Estudo foi desenvolvido para o Trabalho de Conclusão de Curso do curso de Ciência da Computação da Universidade Católica de Pernambuco. O sistema foi desenvolvido para auxiliar o processo de segmentação de imagens medicas de feridas malignas, que é um processo manual e demorado que pode ate ser subjetivo levando ate a erros medicos.
 
+![Segmentação representativa](./data/imgs/representacao_segmentacao.png)
+
 ## Tecnologias utilizadas
 
 - Python
