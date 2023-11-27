@@ -2,7 +2,7 @@
 
 Esta seção apresenta estudos relacionados ao uso de \ac{CNN} para a segmentação de imagens médicas, oferecendo um panorama das pesquisas recentes e estabelecendo um comparativo com o presente trabalho. É também demostrado as bases de dados exploradas em cada estudo. Podemos ver essa análise na tabela ~\ref{tab:analiseTrabalhosRelacionados}.
 
-\begin{table}
+\begin{table}[htbp]
 \tiny
 \centering
 \caption{Análise Comparativa dos Trabalhos Relacionados}
@@ -45,22 +45,16 @@ Recentemente, em 2023, Prakash et al, introduziram um framework de aprendizado p
 
 
 \subsection{Limitação dos Trabalhos Relacionados}
+A literatura existente sobre a utilização de CNNs para segmentação de imagens médicas revela avanços significativos, no entanto, persistem lacunas importantes. Muitos estudos focam no desenvolvimento de modelos sem abordar integralmente as complexidades inerentes às imagens médicas, como variações na forma, tamanho e textura das lesões. Essa limitação pode resultar em imprecisões na segmentação, afetando diretamente a qualidade do diagnóstico e do tratamento. Além disso, a heterogeneidade dos dados clínicos, que inclui variáveis como diferentes tipos de lesões, a qualidade das imagens e a diversidade dos pacientes, não é suficientemente considerada. Essa negligência pode comprometer a capacidade de generalização dos modelos e sua eficácia em ambientes clínicos reais, que apresentam uma gama mais ampla de variáveis.
 
-Apesar dos avanços recentes no uso de \ac{CNN} para a segmentação de imagens médicas, alguns trabalhos ainda apresentam limitações em relação à precisão e eficiência na segmentação de feridas malignas. Por exemplo, alguns modelos podem apresentar dificuldades em lidar com variações na forma, tamanho e textura das lesões, o que pode levar a erros na segmentação e consequentemente afetar a precisão do diagnóstico e tratamento.
-
-Além disso, muitos trabalhos não consideram a heterogeneidade dos dados clínicos, como a presença de diferentes tipos de lesões, a variação na qualidade das imagens e a diversidade de pacientes. Esses fatores podem afetar a generalização dos modelos e limitar sua aplicabilidade em diferentes cenários clínicos.
-
-Outra limitação comum dos trabalhos relacionados é a falta de comparação com outros métodos de segmentação de imagem. Muitos trabalhos se concentraram exclusivamente em modelos de aprendizado profundo, sem compará-los com outros métodos de segmentação de imagem, como métodos baseados em regras ou métodos de segmentação baseados em bordas. Isso pode levar a uma avaliação limitada da eficácia dos modelos de aprendizado profundo em comparação com outros métodos.
-
-Por fim, muitos trabalhos não avaliaram a eficácia dos modelos de aprendizado profundo em condições clínicas reais. Isso pode levar a uma avaliação limitada da eficácia dos modelos em situações do mundo real, onde as condições podem ser mais variáveis e imprevisíveis do que em um ambiente de laboratório controlado.
+Outro ponto crítico é a falta de comparação abrangente com outros métodos de segmentação de imagens. A ênfase predominante em modelos de aprendizado profundo sem análises comparativas limita a compreensão da eficácia relativa desses métodos frente a abordagens tradicionais, como as baseadas em regras ou em detecção de bordas. Por fim, a validação dos modelos em condições clínicas reais é frequentemente insuficiente, levando a uma compreensão limitada da aplicabilidade prática dessas soluções. Muitos estudos se concentram em ambientes controlados de laboratório, sem testar a robustez e a adaptabilidade dos modelos em situações clínicas mais variadas e imprevisíveis.
 
 
 \subsection{Diferencial do Nosso Trabalho }
+Em nosso estudo, propomos uma abordagem inovadora e abrangente para a segmentação de feridas malignas em imagens médicas, combinando a eficiência de múltiplos modelos de aprendizado profundo com técnicas avançadas de pré-processamento de imagens. Investigamos especificamente a aplicabilidade de quatro modelos de \ac{CNN}: \ac{FCN}, \ac{U-Net}, \ac{SegNet} e \ac{MobileNetV2}. - para abordar as limitações identificadas em trabalhos anteriores.
 
-Neste estudo, propomos uma abordagem inovadora para a segmentação de feridas malignas em imagens médicas, que combina diferentes modelos de aprendizado profundo e técnicas de pré-processamento de imagens. Em particular, exploramos a eficiência e aplicabilidade de quatro modelos de \ac{CNN}: \ac{FCN}, \ac{U-Net}, \ac{SegNet} e \ac{MobileNetV2}.
+Diferenciando-nos, empregamos um conjunto de dados clínicos heterogêneo que abrange uma ampla gama de tipos de lesões, idades de pacientes e níveis de gravidade. Essa diversidade garante uma avaliação mais representativa dos modelos em cenários clínicos variados. Ademais, aplicamos técnicas de pré-processamento como normalização, aumento de dados e segmentação manual para melhorar a qualidade e consistência dos dados, aumentando assim a precisão e a generalização dos modelos. 
 
-Para avaliar o desempenho dos modelos, utilizamos um conjunto de dados clínicos heterogêneo, que incluiu imagens de diferentes tipos de lesões, de pacientes de diferentes idades e com diferentes níveis de gravidade. Além disso, aplicamos técnicas de pré-processamento de imagens, como normalização, aumento de dados e segmentação manual, para melhorar a qualidade e consistência dos dados.
+Utilizamos uma metodologia de validação cruzada estratificada, garantindo uma avaliação equitativa e abrangente dos modelos em diferentes conjuntos de dados. Essa abordagem assegura que os modelos sejam testados em condições diversas, refletindo melhor a realidade clínica.
 
-O estudo atual usa uma abordagem de validação cruzada estratificada para avaliar a eficácia dos modelos de aprendizado profundo. Isso ajuda a garantir que os modelos sejam avaliados de forma justa e imparcial em diferentes conjuntos de dados. Foi utilizado dados diversificado que inclui diferentes tipos de lesões malignas, isso ajuda a garantir que os modelos sejam avaliados em uma variedade de condições clínicas e possam ser aplicados em diferentes cenários.
-
-Os resultados obtidos mostraram que nossa abordagem é capaz de segmentar com precisão as feridas malignas em imagens médicas, com uma boa média de precisão da segmentação da ferida. Além disso, nossa abordagem apresentou uma boa generalização em diferentes cenários clínicos, o que sugere sua aplicabilidade em diferentes contextos médicos.
+Os resultados evidenciaram que nossa metodologia não só alcança uma alta precisão na segmentação de feridas malignas mas também demonstra uma notável capacidade de generalização em diversos cenários clínicos. Isso sugere que nossa abordagem tem um potencial significativo para aplicação em contextos médicos variados, contribuindo para diagnósticos e tratamentos mais precisos e eficazes.
