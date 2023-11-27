@@ -21,8 +21,9 @@ Após 150 épocas de treinamento, o modelo \ac{FCN} demonstrou eficácia notáve
 \begin{figure}[htbp]
     \centering
     \caption{Gráfico do Treinamento do Modelo \acf{FCN}}
-    \includegraphics[width=0.8\textwidth]{img/fcnmodelfile.png}
+    \includegraphics[width=0.9\textwidth]{img/fcnmodelfile.png}
     \label{fig:graphFCN}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
 Os indicadores principais de desempenho do \ac{FCN} incluem:
@@ -43,6 +44,7 @@ A Figura~\ref{fig:graphU-Net}, exibida abaixo, mostra a evolução das métricas
     \caption{Gráfico do Treinamento do Modelo \acf{U-Net}}
     \includegraphics[width=0.8\textwidth]{img/unetprunedmodelfile.png}
     \label{fig:graphU-Net}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
 O \ac{U-Net}, aplicado à segmentação de feridas malignas, mostrou resultados altamente promissores. Após 150 épocas, comparativamente ao \ac{FCN}, o modelo alcançou:
@@ -62,8 +64,9 @@ A Figura~\ref{fig:graphSegNet} apresenta a evolução das métricas de \textit{t
 \begin{figure}[htbp]
     \centering
     \caption{Gráfico do Treinamento do Modelo \acf{SegNet}}
-    \includegraphics[width=0.8\textwidth]{img/segnetprunedmodelfile.png}
+    \includegraphics[width=0.7\textwidth]{img/segnetprunedmodelfile.png}
     \label{fig:graphSegNet}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
 Observa-se uma estabilização nessas métricas após determinado número de épocas, indicando a convergência e a consolidação do desempenho do modelo. Esta estabilização reflete o aprendizado efetivo do \ac{SegNet} nos padrões necessários para a segmentação de feridas malignas, apesar de suas métricas serem levemente inferiores às de outros modelos. O desempenho do \ac{SegNet} na segmentação de feridas malignas, embora ligeiramente inferior ao dos modelos \ac{U-Net} e \ac{FCN}, ainda é notável. As métricas de desempenho do \ac{SegNet} destacam aspectos importantes da sua eficácia:
@@ -77,16 +80,17 @@ Observa-se uma estabilização nessas métricas após determinado número de ép
 Conforme ilustrado na Figura~\ref{fig:graphSegNet} acima, o \ac{SegNet} emerge como uma alternativa viável para a segmentação de feridas malignas, particularmente em cenários com restrições computacionais ou outros fatores limitantes na seleção de modelos.
          
 \subsubsection{MobileNetV2}
-A Figura~\ref{fig:graphMobileNetV2} abaixo, exibe a trajetória das métricas de treinamento do \ac{MobileNetV2}. A elevação significativa dos valores de \textit{loss} e a variação acentuada das métricas de desempenho ao longo do treinamento sinalizam uma instabilidade no aprendizado do modelo.
+A Figura~\ref{fig:graphMobileNetV2} abaixo, exibe a trajetória das métricas de treinamento do \ac{MobileNetV2}. 
 
 \begin{figure}[htbp]
     \centering
     \caption{Gráfico do Treinamento do Modelo \acf{MobileNetV2}}
-    \includegraphics[width=0.8\textwidth]{img/mobilenetv2prunedmodelfile.png}
+    \includegraphics[width=0.7\textwidth]{img/mobilenetv2prunedmodelfile.png}
     \label{fig:graphMobileNetV2}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
-No contexto da segmentação de feridas malignas, o \ac{MobileNetV2} exibiu desempenho consideravelmente inferior aos outros modelos testados. As métricas de desempenho evidenciam as deficiências deste modelo:
+A elevação significativa dos valores de \textit{loss} e a variação acentuada das métricas de desempenho ao longo do treinamento sinalizam uma instabilidade no aprendizado do modelo. No contexto da segmentação de feridas malignas, o \ac{MobileNetV2} exibiu desempenho consideravelmente inferior aos outros modelos testados. As métricas de desempenho evidenciam as deficiências deste modelo:
 
 \textbf{Precisão (Precision):} O MobileNetV2 atingiu uma precisão de apenas 73,09\%, um valor significativamente menor em comparação aos demais modelos. Este resultado ressalta a dificuldade do modelo em identificar com precisão as áreas de interesse.
 
@@ -97,15 +101,17 @@ No contexto da segmentação de feridas malignas, o \ac{MobileNetV2} exibiu dese
 Como ilustrado na Figura~\ref{fig:graphMobileNetV2} acima, os resultados alcançados pelo \ac{MobileNetV2} são substancialmente inferiores aos dos outros modelos, evidenciando sua inadequação para a tarefa específica de segmentação de feridas malignas em imagens médicas. Essa análise aponta para a necessidade de desenvolvimento de modelos mais robustos para essa aplicação específica.
 
 \subsection{Análise Comparativa Entre os Modelos}
-Na Figura~\ref{fig:graphResultsModels} abaixo, apresentamos um gráfico comparativo que evidencia as métricas de precisão, recall e coeficiente Dice superiores do \ac{FCN} em relação aos outros modelos. Isso demonstra a excelência do \ac{FCN} em segmentação, complementada pela menor métrica de loss, indicativa de um erro reduzido na segmentação de feridas malignas.
+Na Figura~\ref{fig:graphResultsModels} abaixo, apresentamos um gráfico comparativo que evidencia as métricas de precisão, recall e coeficiente Dice superiores do \ac{FCN} em relação aos outros modelos. 
 
 \begin{figure}[htbp]
     \centering
     \caption{Comparação das Métricas dos Modelos Avaliados}
-    \includegraphics[width=0.8\textwidth]{img/results_metrics_models.png}
+    \includegraphics[width=0.7\textwidth]{img/results_metrics_models.png}
     \label{fig:graphResultsModels}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
+Isso demonstra a excelência do \ac{FCN} em segmentação, complementada pela menor métrica de loss, indicativa de um erro reduzido na segmentação de feridas malignas.
 \clearpage
 
 A tabela \ref{tab:analiseMetricas} abaixo, mostra análise Comparativa das Métricas dos Modelos Avaliados \ac{FCN}, \ac{U-Net}, \ac{SegNet} e \ac{MobileNetV2}.  
@@ -122,18 +128,22 @@ A tabela \ref{tab:analiseMetricas} abaixo, mostra análise Comparativa das Métr
         \ac{MobileNetV2}  & 150    & 0.7309    & 0.6219  & 0.6261  & 0.1936  \\ \hline
     \end{tabular}
     \label{tab:analiseMetricas}
+    \par\medskip\textbf{Fonte:} Autor
 \end{table}
 
-Podemos verificar a segmentação dos modelos nesta representação na figura \ref{fig:resultSegmetationModels} abaixo:
+
+%Podemos verificar a segmentação dos modelos nesta representação na figura \ref{fig:resultSegmetationModels} abaixo:
+Na Figura~\ref{fig:resultSegmetationModels} abaixo, apresentamos exemplos de segmentações realizadas por cada modelo em nossa base de dados, destacando a superioridade do \ac{FCN} em termos de precisão. Enquanto \ac{U-Net} e \ac{SegNet} também mostram eficácia, o \ac{MobileNetV2} revela desempenho insatisfatório para esta tarefa específica.
 
 \begin{figure}[htbp]
     \centering
     \caption{Resultado da Segmentação dos Modelos}
-    \includegraphics[width=0.8\textwidth]{img/resultado_segmentacao_modelos.png}
+    \includegraphics[width=0.9\textwidth]{img/resultado_segmentacao_modelos.png}
     \label{fig:resultSegmetationModels}
+    \par\medskip\textbf{Fonte:} Autor
 \end{figure}
 
-Na Figura~\ref{fig:resultSegmetationModels} acima, apresentamos exemplos de segmentações realizadas por cada modelo em nossa base de dados, destacando a superioridade do \ac{FCN} em termos de precisão. Enquanto \ac{U-Net} e \ac{SegNet} também mostram eficácia, o \ac{MobileNetV2} revela desempenho insatisfatório para esta tarefa específica.
+
 
 Como podemos observa na segmentação de feridas malignas em imagens médicas revela diferenças notáveis em desempenho:
 
@@ -143,20 +153,23 @@ Como podemos observa na segmentação de feridas malignas em imagens médicas re
 
 \textbf{\ac{MobileNetV2}:} Este modelo mostrou-se inadequado para a tarefa, evidenciando a necessidade de escolher cuidadosamente a arquitetura para aplicações clínicas críticas.
 
-
-
-
 A escolha do modelo mais adequado para a segmentação de feridas malignas deve considerar as demandas específicas da aplicação clínica, incluindo objetivos, recursos disponíveis e a necessidade de precisão. Enquanto o \ac{FCN} e o \ac{U-Net} são recomendados para situações que exigem a máxima precisão, o \ac{SegNet} pode ser uma escolha eficiente em contextos com restrições de recursos.
 
 
 \textbf{Conclusão:} Em última análise, a comparação entre esses modelos fornece uma base sólida para decisões informadas na segmentação de feridas malignas em imagens médicas, permitindo a escolha de uma abordagem que melhor atenda às necessidades específicas de cada caso clínico.
 
+A comparação de Redes Neurais Convolucionais \ac{CNNs} avançadas com métodos tradicionais de análise de imagens médicas mostrou que as \ac{CNNs} tinham uma vantagem significativa na segmentação de feridas dolorosas. Modelos de aprendizagem profunda como \ac{U-Net}, \ac{FCN} e \ac{SegNet} demonstraram uma capacidade notável de reconhecer e diferenciar regiões de interesse com o mesmo grau de precisão ou superior aos métodos tradicionais.
+
+As \ac{CNNs} têm benefícios distintos, um deles é a capacidade de reconhecer detalhes sutis e padrões complexos em imagens médicas; esses padrões são muitas vezes difíceis de reconhecer com abordagens manuais ou heurísticas. A capacidade das \ac{CNNs} de alterar seu comportamento dependendo do contexto clínico e do tipo de ferida, mantendo sua precisão, é indicativa de seu potencial na área médica como um todo.
+
+Fatores como a capacidade de generalizar, a capacidade de aprender detalhes específicos sobre feridas dolorosas e a utilização de camadas especializadas como atenção e aumento de circunvoluções contribuíram para o sucesso das \ac{CNNs} em diversas situações clínicas. A versatilidade e a capacidade de aprender representações superiores de imagens médicas foram cruciais para a superioridade destes modelos sobre os métodos tradicionais, o que levou a uma maior capacidade de diagnosticar com precisão e rapidez as feridas que são malignas. \label{sec:perguntas}
+
 \subsection{Contribuições e Perspectivas Futuras}
 
-    Este estudo mostrou contribuições significativas ao campo da oncologia cutânea, promovendo avanços no diagnóstico e acompanhamento de feridas malignas. Os resultados obtidos enriquecem o entendimento do potencial do aprendizado profundo na segmentação de imagens médicas, abrindo caminhos para aprimorar modelos existentes e desenvolver novas arquiteturas.
+    Este estudo demonstra benefícios importantes no campo da oncologia da pele Isto tem contribuído para avanços no diagnóstico e monitoramento de feridas cancerígenas. Os resultados obtidos aprofundam a nossa compreensão do potencial da aprendizagem profunda na segmentação de imagens médicas, abrindo caminho para melhorar os modelos existentes e desenvolver novas arquiteturas.
 
-    \textbf{Limitações e Direções Futuras:} Identificamos limitações nos modelos atuais e propomos direções promissoras para pesquisas futuras. Uma delas é a necessidade de testar os modelos em diversas condições para avaliar sua robustez. Além disso, sugere-se a coleta de um conjunto mais amplo de imagens, em parceria com instituições médicas, para melhorar a generalização dos modelos.
+    \textbf{Limitações e direções futuras:} Identificávamos limitações nos modelos existentes e sugiramos direções promissoras para pesquisas futuras. Uma delas é testar os modelos em diferentes condições para avaliar sua robustez. Além disso, recomenda-se a coleta de um conjunto maior de imagens em colaboração com instituições médicas para melhorar a generalização dos modelos.
 
-    \textbf{Impacto na Comunidade Médica:} As ferramentas desenvolvidas neste estudo são de grande valor para a comunidade médica, pois facilitam a segmentação precisa de feridas malignas. Isso pode levar a diagnósticos mais acurados e tratamentos mais eficazes. As perspectivas futuras incluem o aperfeiçoamento contínuo das abordagens propostas, a expansão da aplicabilidade dos modelos em cenários clínicos mais variados e a exploração de novas técnicas de aprendizado profundo para aprimorar a segmentação de feridas malignas.
+    \textbf{Impacto na comunidade médica:} As ferramentas desenvolvidas neste estudo são de grande valor para a comunidade médica, pois facilitam a segmentação precisa de feridas malignos. Isso pode levar a diagnósticos mais precisos e tratamentos mais eficazes. As tendências futuras incluem a melhoria contínua da abordagem proposta. Expandir a aplicabilidade do modelo em uma gama mais ampla de situações clínicas. e explorar novos métodos de aprendizagem profunda. Para melhorar a segmentação de feridas cancerígenas.
 
-    \textbf{Conclusão:} Em resumo, esta pesquisa apresenta resultados promissores na segmentação de feridas malignas em imagens médicas, fornecendo insights valiosos para futuras investigações. As contribuições deste estudo são notáveis para o avanço da medicina, e as perspectivas futuras se concentram na otimização contínua das técnicas propostas e na exploração de novas abordagens de aprendizado profundo para melhorar ainda mais a precisão na segmentação de feridas malignas.
+    \textbf{Conclusão:} Em resumo, este estudo apresenta resultados promissores na segmentação de feridas oncológicas em imagens médicas. Esta é uma informação valiosa para pesquisas futuras. As contribuições deste estudo são notáveis para o avanço da medicina e as perspectivas futuras concentram-se na otimização contínua dos técnicos propostas e na exploração de novas abordagens de aprendizagem profunda para melhorar ainda mais a precisão da segmentação de feridas malignos.
