@@ -50,8 +50,6 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
     
         A arquitetura \ac{FCN}, representada abaixo na figura \ref{fig:arquiteturaFCN},  é conhecida por sua capacidade de realizar a segmentação semântica em imagens. Ela consiste em uma rede neural convolucional totalmente composta por camadas convolucionais, sem camadas totalmente conectadas. 
 
-        \clearpage
-        
         \begin{figure}[htbp]
             \centering
             \caption{Representação Esquemática da Arquitetura \ac{FCN}.}
@@ -59,6 +57,8 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
             \label{fig:arquiteturaFCN}
             \par\medskip\textbf{Fonte:} adaptada de (\cite{long2015fully})
         \end{figure}
+        
+        \clearpage
         
         A Figura \ref{fig:arquiteturaFCN} acima, apresenta a arquitetura de uma rede \ac{FCN} utilizada para tarefa de segmentação semântica (semantic segmentation), isto é, classificar cada pixel da imagem de entrada de acordo com a classe que ele pertence, sendo: cama, pé ou ferida (background). Conforme a arquitetura apresentada na Figura, existem várias camadas de convolução que produzirão mapas de características de diferentes profundidades. No final da rede, encontra-se a previsão pixelwise (pixelwise prediction) que também é um tipo de camada de convolução e que irá fazer uma predição pixel-a-pixel, isto é, atribuindo cada pixel a uma respectiva classe. Esta representação ilustra de forma esquemática a arquitetura \ac{FCN}, mostrando as camadas convolucionais e suas dimensões. Essa arquitetura é capaz de extrair as características mais importantes das imagens de feridas malignas, permitindo que a rede aprenda a segmentar essas feridas com precisão. 
 
@@ -69,8 +69,6 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
 
         A arquitetura \ac{U-Net}, ilustrada na figura \ref{fig:arquiteturaUNet} abaixo,  é amplamente utilizada para tarefas de segmentação em imagens biomédicas. Ela possui uma estrutura em forma de U, com um encoder para capturar informações contextuais e um decoder para reconstruir a máscara de segmentação. A \ac{U-Net} é conhecida por sua capacidade de segmentação precisa e é aplicada com sucesso em diversos problemas de segmentação, incluindo a segmentação de feridas medicas.
 
-        \clearpage
-
         \begin{figure}[htbp]
             \centering
              \caption{Representação Esquemática da Arquitetura \ac{U-Net}. }
@@ -78,6 +76,8 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
             \label{fig:arquiteturaUNet}
             \par\medskip\textbf{Fonte:} adaptada de (\cite{ronneberger2015u})
         \end{figure}
+        
+        \clearpage
 
             A Figura \ref{fig:arquiteturaUNet} acima, ilustra a arquitetura da rede \ac{U-Net}, em que cada caixinha azul presente na imagem corresponde a um mapa de característica multicanal (multichannel feature map). O número de cada canal está descrito no valor acima de cada caixa. No canto inferior esquerdo é dada a dimensão x-y da imagem. As caixas brancas representam a cópia dos mapas de características (feature maps) e cada flecha com sua respectiva cor representa uma operação diferente. Na parte direita da rede as flechas verdes referem-se ao caminho de expansão onde é utilizado a operação de up-convolution, também chamada de de-convolution6 ou transposed convolution. A figura ilustra essa arquitetura de forma esquemática, mostrando as camadas convolucionais, as camadas de pooling máximo e up-sampling, e as conexões laterais entre as camadas do caminho de contração e do caminho de expansão.
 
@@ -87,8 +87,6 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
 
         O modelo \ac{SegNet}, representado na figura \ref{fig:arquiteturaSegNet} abaixo,  é baseado em uma arquitetura de codificador-decodificador. Cada codificador aplica convolução, normalização de lote e uma não linearidade, e depois aplica um pool máximo no resultado, enquanto armazena o índice do valor extraído de cada janela. Os decodificadores são semelhantes aos codificadores, a diferença é que eles não têm uma não linearidade e aumentam a amostra de entrada, usando índices armazenados a partir do estágio de codificação.
 
-        \clearpage
-
         \begin{figure}[htbp]
             \centering
             \caption{Representação Esquemática da Arquitetura \ac{SegNet}.}
@@ -96,6 +94,8 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
             \label{fig:arquiteturaSegNet}
             \par\medskip\textbf{Fonte:} adaptada de (\cite{badrinarayanan2017deep})
         \end{figure}
+        
+        \clearpage
 
             A Figura \ref{fig:arquiteturaSegNet} acima, ilustra essa arquitetura de forma esquemática, mostrando as camadas de codificação e decodificação, bem como as conexões entre elas. Cada caixa na figura representa uma camada de convolução, normalização de lote e não linearidade, enquanto as setas representam as conexões entre as camadas. As camadas de pooling máximo são representadas pelas caixas de cor verde. Além disso, a figura também mostra a saída da rede, que é uma imagem segmentada com as áreas de feridas malignas destacadas em branco. Essa saída é gerada pela última camada de decodificação da rede.
             Em resumo, a Figura ilustra de forma esquemática a arquitetura \ac{SegNet}, mostrando as camadas de codificação e decodificação, bem como as conexões entre elas. Essa arquitetura é capaz de segmentar com precisão as feridas malignas em imagens médicas, como mostrado nos resultados do estudo.
@@ -114,7 +114,7 @@ Neste projeto de pesquisa foi empregado diversos modelos de aprendizagem profund
                 \par\medskip\textbf{Fonte:} adaptada de (\cite{akay2021deep})
             \end{figure}   
     
-        A figura \ref{fig: arquiteturaMobileNetV2} mostra esquematicamente esta arquitetura. Revela a camada de convolução e seu tamanho. A imagem de entrada é uma imagem de ferida com dimensões 128x128x3, que é processada pela primeira camada convolucional com dimensões 128x128 e um número de filtros (ou canais) igual a 32. Em seguida a imagem é processada por uma segunda camada convolucional com dimensões 64x64 e uma número de filtros igual a 32. Em seguida, a imagem é processada por diversas camadas convolucionais com dimensões 32x32 e 96 filtros, que são responsáveis por extrair características mais complexos da imagem Estas camadas são seguidas por uma camada convolucional de dimensões 4x4 e um número de filtros igual a 1280, responsáveis por extrair as características mais importantes da imagem Por fim, a saída da última camada convolucional é processada por uma rede totalmente conectada com número de neurônios igual a 1280, que é responsável por gerar a saída final da rede.
+        A figura \ref{fig:arquiteturaMobileNetV2} mostra esquematicamente esta arquitetura. Revela a camada de convolução e seu tamanho. A imagem de entrada é uma imagem de ferida com dimensões 128x128x3, que é processada pela primeira camada convolucional com dimensões 128x128 e um número de filtros (ou canais) igual a 32. Em seguida a imagem é processada por uma segunda camada convolucional com dimensões 64x64 e uma número de filtros igual a 32. Em seguida, a imagem é processada por diversas camadas convolucionais com dimensões 32x32 e 96 filtros, que são responsáveis por extrair características mais complexos da imagem Estas camadas são seguidas por uma camada convolucional de dimensões 4x4 e um número de filtros igual a 1280, responsáveis por extrair as características mais importantes da imagem Por fim, a saída da última camada convolucional é processada por uma rede totalmente conectada com número de neurônios igual a 1280, que é responsável por gerar a saída final da rede.
 
 \subsection{Treinamento e Ajuste do Modelo}
 
