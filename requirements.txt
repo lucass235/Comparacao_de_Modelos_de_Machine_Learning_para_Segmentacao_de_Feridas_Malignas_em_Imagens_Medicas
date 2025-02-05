@@ -2,3 +2,4 @@ tensorflow
 tensorflow_model_optimization
 keras
 numpy
+tf_keras

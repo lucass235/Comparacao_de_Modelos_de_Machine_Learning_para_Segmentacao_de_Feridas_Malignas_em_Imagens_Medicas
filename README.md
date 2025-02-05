@@ -32,7 +32,6 @@ O projeto foi desenvolvido utilizando o Jupyter Notebook, fizemos uma organizaç
 
 - Geração do gráfico comparativo das métricas dos modelos: Para gerar o gráfico comparativo dos modelos, basta executar o arquivo "generate_results_metrics.ipynb" que esta na pasta "scripts/generate_results_metrics.ipynb". Este arquivo ira gerar o gráfico comparativo das métricas dos modelos e salvar o gráfico na pasta "data/imgs". Para gerar o gráfico foi antecipadamente feito um csv com os valores das métricas de cada modelo, este csv esta na pasta "data/".
 
-
 ## Dataset
 
 O dataset utilizado neste estudo foi criado a partir de um conjunto de dataset de feridas e lesões medias de diferentes cenários. O dataset foi dividido em 2 pastas, sendo elas: "wooundSegmentation/data/(Nome do dataset)/train e woundSegmentation/data/(Nome do dataset)/test". A pasta "train" contem as imagens de treinamento e a pasta "test" contem as imagens de teste. Dentro de cada pasta temos 2 pastas, sendo elas: "images" e "labels". A pasta "images" contem as imagens de treinamento e a pasta "labels" contem as imagens de mascara das imagens de treinamento. As imagens de mascara foram criadas utilizando o software de anotação de imagens "LabelImg". Para criar as imagens de mascara, foi feito a anotação das imagens de treinamento, sendo anotado apenas a região da ferida. O link para acessa a origem do datasets utilizados neste estudo esta na pasta do dataset.
